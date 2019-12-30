@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}
+<style>
+    .name{
+        color:red;
+    }
+</style>
+
+
+<p>Test</p>
+
+{% for tripInfo in tripInfo %}
+<div class='name'>{{tripInfo.name}}</div> <br>
+{{tripInfo.country}} <br>
+{{tripInfo.city}} <br>
+
+{% endfor %}
+
+
+{% endblock content %}
