@@ -6,7 +6,7 @@ import re
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Project3'
-app.config["MONGO_URI"] = 'mongodb+srv://root:rOOtUser@clusterjane-dczgp.mongodb.net/test?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 conn = pymongo.MongoClient('mongodb+srv://root:rOOtUser@clusterjane-dczgp.mongodb.net/test?retryWrites=true&w=majority')
 DATABASE_NAME = 'Project3'
 COLLECTION_NAME = 'addtrip'
