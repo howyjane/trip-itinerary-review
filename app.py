@@ -22,7 +22,6 @@ def index():
     
 @app.route('/add_trip')
 def add_trip():
-    
     return render_template("add.html")
 
 
