@@ -15,13 +15,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <form class='sign-up-form' method="post">
+                <form class='sign-up-form' action="/add_trip" method="post" enctype="multipart/form-data">
                     <br><br>
                     <h2 class='text-center'>Add Your Travel Journey!</h2>
                     <br>
-                    <input class="form-control" name="username" placeholder="Enter Your First Name" type="text" required>
+                    <input class="form-control" name="name" placeholder="Enter Your First Name" type="text" required>
                     <br>
-                    <input class="form-control" name="name" placeholder="Enter Trip Title" type="text" required>
+                    <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
                     <br>
                     <input class="form-control" name="country" placeholder="Enter Country of Visit" type="text" required>
                     <br>
@@ -43,8 +43,8 @@
                     <textarea class="form-control" name="description" placeholder="Enter Your Trip Review" type="text" required></textarea>
                     <br>
                     Ratings: <Input type="number" id="myNumber" placeholder="Enter Your Trip Ratings" required min="1" step="1" max="5" value="0" pattern="[0-9]*" /><br>
-                    <p>(1: Very Good, 2: Good, 3: Average, 4: Poor, 5: Very Poor)</p><br>
-                    Estimated Trip Cost: USD <input type="text" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" pattern="[0-9]*" />
+                    <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
+                    Estimated Trip Cost: USD <input type="text" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
                     <br><br>
                     <label for="">Insert Your Trip Profile Image:</label><br>
                     <input type="file"
