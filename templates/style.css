@@ -7,3 +7,40 @@ input,
 label {
     margin: .4rem 0;
 }
+
+.container2{
+  background-color:rgb(1, 1, 1,0.3);
+  height:200vh;
+    
+  /* Text styles */
+  text-align: left;
+  color:whitesmoke;
+  font-size:1.09em;
+  font-family:Arial;
+  
+
+  /* Background styles */
+  background-image: url('images/background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+}
+
+
+
+
+
+    .name{
+        color:red;
+    }
+    
+        .country{
+        color:blue;
+    }
+    
+        .title{
+        color:green;
+        font-size:20px;
+    }
