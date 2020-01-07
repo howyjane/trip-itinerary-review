@@ -16,43 +16,47 @@
         <div class="row">
             
             <div class="col-sm-12">
-                <form class='sign-up-form' action="/add_trip" method="post" enctype="multipart/form-data">
+                <form class='sign-up-form' action="/edit_trip" method="post" enctype="multipart/form-data">
                     <br><br>
-                    <h2 class='text-center'>Add Your Travel Journey!</h2>
+                    <h2 class='text-center'>Edit Your Travel Journey!</h2>
                     <br>
-                    <input class="form-control" name="name" placeholder="Enter Your First Name" type="text" required>
+                    
+                    User First Name:<input class="form-control" name="name" value="{{tripInfo.name}}" type="text" required>
                     <br>
-                    <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
+                    Trip Title:<input class="form-control" name="triptitle" value="{{tripInfo.triptitle}}" placeholder="Enter Trip Title" type="text" required>
                     <br>
-                    <input class="form-control" name="country" placeholder="Enter Country of Visit" type="text" required>
+                    Country of Visit:<input class="form-control" name="country" value="{{tripInfo.country}}" placeholder="Enter Country of Visit" type="text" required>
                     <br>
-                    <input class="form-control" name="city" placeholder="Enter City Name" type="text">
+                    City Name:<input class="form-control" name="city" value="{{tripInfo.city}}" placeholder="Enter City Name" type="text">
                     <br>
                     Starting Date: 
-                    <input type="text" name="sd" placeholder="DD/MM/YYYY"
+                    <input type="text" name="sd" value="{{tripInfo.startdate}}" placeholder="DD/MM/YYYY"
                     onfocus="(this.type='date')"
                     onblur="(this.type='text')"> 
                     <br><br>
 
                     Ending Date : 
-                    <input type="text" name="ed" placeholder="DD/MM/YYYY"
+                    <input type="text" name="ed" value="{{tripInfo.enddate}}" placeholder="DD/MM/YYYY"
                     onfocus="(this.type='date')"
                     onblur="(this.type='text')">  
                     <br><br>
-                    <textarea class="form-control" name="tripattraction" placeholder="Your Recommended Attractions?" type="text" required></textarea>
+                    Your Recommended Attractions: <input class="form-control" name="tripattraction" value="{{tripInfo.tripattraction}}" placeholder="Your Recommended Attractions?" type="text" required>
                     <br>
-                    <textarea class="form-control" name="tripreview" placeholder="Enter Your Trip Review" type="text" required></textarea>
+                    Your Trip Review: <input class="form-control" name="tripreview" value="{{tripInfo.tripreview}}" placeholder="Enter Your Trip Review" type="text" required>
                     <br>
-                    Ratings: <Input type="number" name="ratings" id="myNumber" placeholder="Enter Your Trip Ratings" required min="1" step="1" max="5" value="0" pattern="[0-9]*" /><br>
+                    Trip Ratings: <Input type="number" name="ratings" id="myNumber" value="{{tripInfo.ratings}}" placeholder="Enter Your Trip Ratings" required min="1" step="0.1" max="5" value="0" pattern="[0-9]*" /><br>
                     <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
-                    Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
+                    Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" value="{{tripInfo.totalestimatedcost}}"required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
                     <br><br>
+                    
+                    <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
+          
                     <label for="">Insert Your Trip Profile Image:</label><br>
                     <input type="file"
                     id="photo" name="photo"
-                    accept="image/png, image/jpeg" required>
+                    accept="image/png, image/jpeg" required>>
                     <br><br>
-                    <a href="#" class="btn btn-info center-success">Delete Trip</a>
+                    <button type="submit" value="submit" class="btn btn-info center-block">Edit Trip </button><br><br>
                 </form>
             </div>
         </div>

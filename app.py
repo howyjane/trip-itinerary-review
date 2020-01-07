@@ -84,9 +84,6 @@ def summary_trip():
     return render_template("summary.html")  
 
 
-@app.route('/edit_trip')
-def edit_trip():
-    return render_template("edit.html") 
 
 @app.route('/landingpagesummarytrip/<tripId>')
 def landingpagesummary_trip(tripId):
@@ -94,9 +91,64 @@ def landingpagesummary_trip(tripId):
     return render_template("landingpagesummary.html", tripInfo=tripInfo)
     
 @app.route('/edit/<tripId>')
-def edit(tripId):
+def edit_trip(tripId):
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one({'_id': ObjectId(tripId)})
     return render_template("edit.html", tripInfo=tripInfo)  
 
+
+@app.route('/edit_trip', methods=['POST'])
+def editvalue():
+    name = request.form['name']
+    country = request.form['country']
+    city = request.form['city']
+    startdate = request.form['sd']
+    enddate = request.form['ed']
+    triptitle = request.form['triptitle']
+    tripreview = request.form['tripreview']
+    tripattraction = request.form['tripattraction']
+    ratings = request.form['ratings']
+    totalestimatedcost = request.form['totalestimatedcost']
+    file = request.files['photo']
+    
+    imageUrl = ''
+    if file.filename != '':
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imageUrl = url_for('uploaded_file', filename=filename)
+    
+    editTrip = {
+        "name": request.form['name'],
+        "country": request.form['country'],
+        "city": request.form['city'],
+        "startdate": request.form['sd'],
+        "enddate": request.form['ed'],
+        "triptitle": request.form['triptitle'],
+        "tripreview": request.form['tripreview'],
+        "tripattraction": request.form['tripattraction'],
+        "totalestimatedcost": request.form['totalestimatedcost'],
+        "ratings": request.form['ratings'],
+        "imageURL":imageUrl,
+        
+    }
+    conn[DATABASE_NAME][COLLECTION_NAME].update_one((editTrip),
+        { "$set": {
+        "name": request.form['name'],
+        "country": request.form['country'],
+        "city": request.form['city'],
+        "startdate": request.form['sd'],
+        "enddate": request.form['ed'],
+        "triptitle": request.form['triptitle'],
+        "tripreview": request.form['tripreview'],
+        "tripattraction": request.form['tripattraction'],
+        "totalestimatedcost": request.form['totalestimatedcost'],
+        "ratings": request.form['ratings'],
+        "imageURL":imageUrl,
+                             }
+                 })
+
+    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename)
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),port=int(os.environ.get('PORT')),debug=True)
+    
+  

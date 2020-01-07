@@ -20,19 +20,15 @@
        
    
        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="" alt="">
-        <h2>{{tripInfo.country}}</h2>
-           
-      
+          <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="">
+        
           <div class="card-body">
-       
-            <h3 class="card-title"></h3>
-            <h4></h4>
-              
-            <p class="card-text"></p>
-      
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+           <h1 class="card-title"  style="color:purple; "><strong>{{tripInfo.country}}</strong></h1>
+            <p style=" font-size: 170%;"><strong>{{tripInfo.city}}</strong></p>
+            <p style=style="font-family: courier; font-size: 150%;"><strong>{{tripInfo.name}}'s trip ratings: {{tripInfo.ratings}} stars </strong> </p>
+            <h2 style="font-size: 150%; font-family: courier;"><strong>"{{tripInfo.triptitle}}"</strong></h2>
+            <p class="card-text" style="font-size: 150%; font-family: courier; ">{{tripInfo.tripreview}}</p>
+
           </div>
         
         </div>
@@ -44,7 +40,7 @@
             Recommended Attractions
           </div>
           <div class="card-body">
-            <p>{{tripInfo.tripattraction}}</p>
+           <p style="font-size: 100%; font-family: courier; ">{{tripInfo.tripattraction}}</p>
             <br>
           </div>
         </div>
@@ -53,17 +49,18 @@
             Additional Information
           </div>
           <div class="card-body">
-            <p>Trip Start Date:{{tripInfo.startdate}}</p>
-            <p>Trip End Date:{{tripInfo.enddate}}</p>
+            <p>Trip Start Date: {{tripInfo.startdate}}</p>
+            <p>Trip End Date: {{tripInfo.enddate}}</p>
             <p>Total Estimated Cost of Trip: USD {{tripInfo.totalestimatedcost}}</p>
           </div>
         </div>
 
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <small class="text-muted">Posted by {{tripInfo.name}}</small>
             <hr>
+            <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
             <a href="{{url_for('edit_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Edit Trip</a>
             <a href="#" class="btn btn-info center-success">Delete Trip</a>
-            <a href="#" class="btn btn-info center-success">To Previous Page</a>
+            
             
         </div>
       <!-- /.col-lg-9 -->
