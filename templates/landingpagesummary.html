@@ -16,17 +16,27 @@
     <div class="row">
 
       <div class="col-lg-9">
+    
+       
+   
        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+          <img class="card-img-top img-fluid" src="" alt="">
+        <h2>{{tripInfo.country}}</h2>
+           
+      
           <div class="card-body">
-            <h3 class="card-title">{{tripInfo}}</h3>
-            <h4>triptitle</h4>
-            <p class="card-text">tripreview</p>
-            
+       
+            <h3 class="card-title"></h3>
+            <h4></h4>
+              
+            <p class="card-text"></p>
+      
             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 stars
           </div>
+        
         </div>
+         
         <!-- /.card -->
 
         <div class="card card-outline-secondary my-4">
@@ -34,7 +44,7 @@
             Recommended Attractions
           </div>
           <div class="card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+            <p>{{tripInfo.tripattraction}}</p>
             <br>
           </div>
         </div>
@@ -43,21 +53,23 @@
             Additional Information
           </div>
           <div class="card-body">
-            <p>Trip Start Date:</p>
-            <p>Trip End Date:</p>
-            <p>Total Estimated Cost of Trip:</p>
+            <p>Trip Start Date:{{tripInfo.startdate}}</p>
+            <p>Trip End Date:{{tripInfo.enddate}}</p>
+            <p>Total Estimated Cost of Trip: USD {{tripInfo.totalestimatedcost}}</p>
           </div>
         </div>
 
             <small class="text-muted">Posted by Anonymous on 3/1/17</small>
             <hr>
-            <a href="#" class="btn btn-info center-success">Edit Trip</a>
+            <a href="{{url_for('edit_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Edit Trip</a>
             <a href="#" class="btn btn-info center-success">Delete Trip</a>
+            <a href="#" class="btn btn-info center-success">To Previous Page</a>
             
         </div>
       <!-- /.col-lg-9 -->
     </div>
   </div>
+
   <!-- /.container -->
   <br>
   <!-- Footer -->

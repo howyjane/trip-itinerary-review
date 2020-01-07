@@ -5,4 +5,6 @@ document.getElementById("number").onblur =function (){
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     
  document.getElementById("display").value = this.value.replace(/,/g, "")
+ 
 }
+

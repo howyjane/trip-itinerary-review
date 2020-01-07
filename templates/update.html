@@ -11,11 +11,19 @@
 </head>
 
 <body>
-
+    <h3>Update tasks with a reference</h3>  
+    <form action="/action3" method="POST">  
+    {% for task in tasks %}  
+        Unique Object ID : {{ task['_id'] }}<br/>  
+    <input type="text" name="_id" value="{{ task['_id'] }}" hidden>  
+    
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <form class='sign-up-form' action="/add_trip" method="post" enctype="multipart/form-data">
+                    {% for task in tasks%}
+                        uniqueObjectID : {{ task['_id'] }}<br/>  
+                
                     <br><br>
                     <h2 class='text-center'>Add Your Travel Journey!</h2>
                     <br>

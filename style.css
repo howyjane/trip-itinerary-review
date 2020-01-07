@@ -8,9 +8,9 @@ label {
     margin: .4rem 0;
 }
 
-.container2{
+.body{
   background-color:rgb(1, 1, 1,0.3);
-  height:200vh;
+
     
   /* Text styles */
   text-align: left;
@@ -28,19 +28,12 @@ label {
   
 }
 
-
-
-
-
-    .name{
-        color:red;
+    .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
     }
-    
-        .country{
-        color:blue;
-    }
-    
-        .title{
-        color:green;
-        font-size:20px;
-    }
+
+
+
+

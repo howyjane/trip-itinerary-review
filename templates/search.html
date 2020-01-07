@@ -14,16 +14,18 @@
   <div class="container">
 
     <div class="row">
-
+      
+     
       <div class="col-lg-3">
         <h1 class="my-4">Search Countries</h1>
+         {% for tripInfo in tripInfo %}
         <div class="list-group">
-          <a href="#" class="list-group-item active">Country 1</a>
-          <a href="#" class="list-group-item">Country 2</a>
-          <a href="#" class="list-group-item">Country 3</a>
-        </div>
-      </div>
+          <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="list-group-item">{{tripInfo.country}}, {{tripInfo.city}}</a>
 
+        </div>
+         {% endfor %}
+      </div>
+    
       <div class="col-lg-9">
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
