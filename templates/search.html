@@ -23,15 +23,20 @@
           <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="list-group-item">{{tripInfo.country}}, {{tripInfo.city}}</a>
 
         </div>
-         {% endfor %}
+          
+      {% endfor %}
       </div>
-    
+   
       <div class="col-lg-9">
+    
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
           <strong>Search Results</strong>
+          <select class="form-control">
+          <option></option>
+          </select>
           </div>
-        
+  
             <a href="{{url_for('summary_trip')}}" class="list-item p-3">Flex item 1</a>
 
           

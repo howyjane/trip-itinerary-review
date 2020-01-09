@@ -84,20 +84,21 @@ def summary_trip():
     return render_template("summary.html")  
 
 
-
 @app.route('/landingpagesummarytrip/<tripId>')
 def landingpagesummary_trip(tripId):
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one({'_id': ObjectId(tripId)})
     return render_template("landingpagesummary.html", tripInfo=tripInfo)
     
+
+
 @app.route('/edit/<tripId>')
 def edit_trip(tripId):
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one({'_id': ObjectId(tripId)})
     return render_template("edit.html", tripInfo=tripInfo)  
-
+    
 
 @app.route('/edit_trip', methods=['POST'])
-def editvalue():
+def update_trip():
     name = request.form['name']
     country = request.form['country']
     city = request.form['city']
@@ -109,28 +110,17 @@ def editvalue():
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
     file = request.files['photo']
+    tripId=request.values.get("_id")  
     
     imageUrl = ''
     if file.filename != '':
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         imageUrl = url_for('uploaded_file', filename=filename)
-    
-    editTrip = {
-        "name": request.form['name'],
-        "country": request.form['country'],
-        "city": request.form['city'],
-        "startdate": request.form['sd'],
-        "enddate": request.form['ed'],
-        "triptitle": request.form['triptitle'],
-        "tripreview": request.form['tripreview'],
-        "tripattraction": request.form['tripattraction'],
-        "totalestimatedcost": request.form['totalestimatedcost'],
-        "ratings": request.form['ratings'],
-        "imageURL":imageUrl,
-        
-    }
-    conn[DATABASE_NAME][COLLECTION_NAME].update_one((editTrip),
+
+ 
+        conn[DATABASE_NAME][COLLECTION_NAME].update_one({'_id': ObjectId(tripId)},
+
         { "$set": {
         "name": request.form['name'],
         "country": request.form['country'],
@@ -151,4 +141,4 @@ def editvalue():
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),port=int(os.environ.get('PORT')),debug=True)
     
-  
+

@@ -13,47 +13,60 @@
   <!-- Page Content -->
   <div class="container">
 
-    <div class="row text-center">
-      <div class="card mt-4">
-          <img class="card-img-top" src="http://placehold.it/900x400" alt="">
-        <div class="card-body">
-            <h3 class="card-title">{{n}}</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+    <div class="row">
+      
+      <div class="col-lg-9">
+       {% if filename %}
+       <div class="card mt-4">
+          <img class="card-img-top img-fluid" src="{{url_for('uploaded_file', filename=filename)}}" alt="profileimg">
+          {% else %}
+           <h1>no image</h1>
+            {% endif %}
+          <div class="card-body">
+            <h1 class="card-title"  style="color:purple; "><strong>{{tripInfo.country}}</strong></h1>
+            <p style=" font-size: 170%;"><strong>{{cc}}</strong></p>
+            <p style=style="font-family: courier; font-size: 150%;"><strong>{{n}}'s trip ratings: {{r}} stars</strong></p>
+            <h2 style="font-size: 150%; font-family: courier; "><strong>"{{tt}}"</strong></h2>
+            <p class="card-text" style="font-size: 100%; font-family: courier; ">{{rv}}</p>
+
+          </div>
         </div>
-      </div>
         <!-- /.card -->
 
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
-            Product Reviews
+            Recommended Attractions
           </div>
           <div class="card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <a href="#" class="btn btn-info center-success">Edit Trip</a>
-            <a href="#" class="btn btn-info center-success">Delete Trip</a>
+            <p style="font-size: 100%; font-family: courier; ">{{a}}</p>
+            <br>
           </div>
         </div>
-        <!-- /.card -->
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Additional Information
+          </div>
+          <div class="card-body">
+            <p style="font-size: 100%; font-family: courier; ">Trip Start Date: {{sd}}</p>
+            <p style="font-size: 100%; font-family: courier; ">Trip End Date: {{ed}}</p>
+            <p style="font-size: 100%; font-family: courier; ">Total Estimated Cost of Trip: USD {{ct}}</p>
+          </div>
+        </div>
 
-      </div>
+            <small class="text-muted">Posted by {{n}}</small>
+            <hr>
+            <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+            <a href="#" class="btn btn-info center-success">Edit Trip</a>
+            <a href="#" class="btn btn-info center-success">Delete Trip</a>
+       
+        </div>
+        
       <!-- /.col-lg-9 -->
-
-
-
+    </div>
   </div>
+ 
   <!-- /.container -->
-
+  <br>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
@@ -69,5 +82,5 @@
 </body>
 
 </html>
-{% endblock content %} 
 
+{% endblock content %} 
