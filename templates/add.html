@@ -25,6 +25,17 @@
                     <br>
                     <input class="form-control" name="country" placeholder="Enter Country of Visit" type="text" required>
                     <br>
+                    Please select country : <select id="countries"></select>
+                    <br><br>
+                    Select Country of Visit : <select id="countries" name="country">
+                    <option value="country">Select Country</option>
+                    <option value="country">Singapore</option>
+                    <option value="country">Malaysia</option>
+                    </select>
+
+
+                    <br>     
+                    <br>
                     <input class="form-control" name="city" placeholder="Enter City Name" type="text">
                     <br>
                     Starting Date: 
@@ -51,13 +62,16 @@
                     id="photo" name="photo"
                     accept="image/png, image/jpeg" required>
                     <br><br>
-                    <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
-                    <button type="submit" value="submit" class="btn btn-info center-block">Add Trip </button><br><br>
+                    
+
+                    <a href="{{url_for('index')}}" class="btn btn-info center-success">Previous Page</a>
+                    <button type="submit" value="submit" class="btn btn-info center-block">Add Trip </button><br>
+                    
                 </form>
             </div>
         </div>
     </div>
-
+<br>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
@@ -80,6 +94,35 @@
  document.getElementById("display").value = this.value.replace(/,/g, "")
 }
 </script>
+   <script>const countriesList = document.getElementById("countries");
+
+    function newCountrySelection(event) {
+      displayCountryInfo(event.target.value);
+}
+
+  fetch("https://restcountries.eu/rest/v2/all")
+  .then(res => res.json())
+  .then(data => initialize(data))
+  .catch(err => console.log("Error:", err));
+
+function initialize(countriesData) {
+  countries = countriesData;
+  let options = "";
+
+  countries.forEach(country => options+=`<option value="${country.alpha3Code}">${country.name}</option>`);
+
+  countriesList.innerHTML = options;
+
+  countriesList.selectedIndex = Math.floor(Math.random()*countriesList.length);
+
+}
+
+function displayCountryInfo(countryByAlpha3Code) {
+  const countryData = countries.find(country => country.alpha3Code === countryByAlpha3Code);
+
+}
+</script>
+
 </body>
 </html>
 

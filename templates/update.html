@@ -91,3 +91,23 @@
 </html>
 
 {% endblock content %} 
+
+  
+          <select class="form-control" name="country">
+          <option disabled selected>Select Country of Visit</option>
+          {% for tripInfo in tripInfo %}
+          <option value="country">{{tripInfo.country}}</option>
+          
+          {% endfor %}
+          </select><br>
+          
+          <select class="form-control" name="country">
+          <option disabled selected>Select City of Visit</option>
+          {% for tripInfo in tripInfo %}
+          <option value="city">{{tripInfo.city}}</option>
+          
+          {% endfor %}
+          </select><br>
+
+          
+          <input type="submit" value="Submit"/>

@@ -14,39 +14,80 @@
   <div class="container">
 
     <div class="row">
-      
-     
-      <div class="col-lg-3">
-        <h1 class="my-4">Search Countries</h1>
-         {% for tripInfo in tripInfo %}
-        <div class="list-group">
-          <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="list-group-item">{{tripInfo.country}}, {{tripInfo.city}}</a>
-
-        </div>
-          
-      {% endfor %}
-      </div>
-   
-      <div class="col-lg-9">
-    
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-          <strong>Search Results</strong>
-          <select class="form-control">
-          <option></option>
+       <div class="col-lg-9">
+          <br>
+          <strong>Search by Country of Visit</strong>
+          <br><br>
+          <select class="form-control" name="country">
+          <option disabled selected>Select Country </option>
+          {% for tripInfo in tripInfo %}
+          <option value="{{tripInfo.country}}">{{tripInfo.country}}</option>
+          {% endfor %}
           </select>
-          </div>
+          
+          <br>
+          
+          <strong>Search by City of Visit</strong>
+          <br><br>
+          <select class="form-control" name="city">
+          <option disabled selected>Select City </option>
+          {% for tripInfo2 in tripInfo2 %}
+          <option value="{{tripInfo2.city}}">{{tripInfo2.city}}</option>
+          {% endfor %}
+          </select>
+          <br>
+          <button type="submit" value="submit" class="btn btn-info center-block">Search</button><br>
   
-            <a href="{{url_for('summary_trip')}}" class="list-item p-3">Flex item 1</a>
+          <br><br>
+        
+          <strong>Search Results</strong><br><br>
+         
+            <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Trip</th>
+              <th scope="col">Country</th>
+              <th scope="col">City</th>
+              <th scope="col">Trip Start Date</th>
+              <th scope="col">Trip End Date</th>
+              <th scope="col">Trip Title</th>
+              <th scope="col">Trip Ratings</th>
+              <th scope="col">Posted By</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+            <tbody>
+           
+            <tr>
+              
+              {% for tripInfo in tripInfo %}
+              <th scope="row">Trip</th>
+              
+              <td class="_id" {{tripInfo._id}} hidden></td>
+              <td class="country">{{tripInfo.country}}</td>  
+              <td class="city">{{ tripInfo.city}}</td>  
+              <td class="startdate">{{tripInfo.startdate }}</td>  
+              <td class="enddate">{{ tripInfo.enddate}}</td>  
+              <td class="triptitle">{{ tripInfo.triptitle}}</td>  
+              <td class="ratings">{{ tripInfo.ratings }}</td>
+              <td class="name">{{tripInfo.name}}</td>
+              <td class="details"><a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">Click For Trip Details!</a></td>
+              
+             </tr>
+             {% endfor %}
+            
+              
+             </tbody>
+            </table>
+               <br>
+            <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+            </div>
+           </div>
+          </div>
 
-          
-          
-        </div>
-        <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
-        <!-- /.col-lg-9 -->
-      </div>
-    </div>
+   
   </div>
+
   <!-- /.container -->
   <br>
   <!-- Footer -->
@@ -66,3 +107,4 @@
 </html>
 
 {% endblock content %} 
+

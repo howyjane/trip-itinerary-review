@@ -12,9 +12,7 @@
 <body>
   <!-- Page Content -->
   <div class="container">
-
     <div class="row">
-      
       <div class="col-lg-9">
        {% if filename %}
        <div class="card mt-4">
@@ -55,12 +53,11 @@
 
             <small class="text-muted">Posted by {{n}}</small>
             <hr>
-            <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
-            <a href="#" class="btn btn-info center-success">Edit Trip</a>
-            <a href="#" class="btn btn-info center-success">Delete Trip</a>
-       
+          
+          <a href="{{url_for('index')}}" class="btn btn-info center-success">Confirm Details</a>
+    
         </div>
-        
+       
       <!-- /.col-lg-9 -->
     </div>
   </div>

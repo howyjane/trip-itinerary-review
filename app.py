@@ -23,18 +23,35 @@ def index():
     return render_template("index.html", tripInfo=tripInfo)
 
 
-@app.route('/search_trip')
+@app.route('/search_trip', methods=['POST','GET'])
 def search_trip():
+    
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find().sort("country",1)
     return render_template("search.html", tripInfo=tripInfo) 
-    
 
+@app.route('/search_trip', methods=['POST','GET'])
+def search_trip2():
+    
+    tripInfo2 = conn[DATABASE_NAME][COLLECTION_NAME].find().sort("city",1)
+    return render_template("search.html", tripInfo2=tripInfo2) 
+
+@app.route("/search_trip", methods=['POST','GET'])  
+def search():  
+    #Searching a Task with various references  
+  
+    tripId=request.values.get("_id") 
+    country = request.form['country']
+    
+    if(tripId=="_id",country=="country"):  
+         tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find()({'_id': ObjectId(tripId)})
+    else:  
+        return 'sorry route not found'
+    return render_template('search.html',tripInfo=tripInfo)
 
 @app.route('/add_trip')
 def add_trip():
     return render_template("add.html")
     
-
 
 @app.route('/add_trip', methods=['POST'])
 def getvalue():
@@ -70,7 +87,8 @@ def getvalue():
         "imageURL":imageUrl,
         
     }
-    conn[DATABASE_NAME][COLLECTION_NAME].insert_one(newTrip)
+    
+    tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].insert_one(newTrip)
     return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename)
     
     
@@ -78,19 +96,15 @@ def getvalue():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-
 @app.route('/summary_trip')
 def summary_trip():
-    return render_template("summary.html")  
-
+    return render_template("summary.html")
 
 @app.route('/landingpagesummarytrip/<tripId>')
 def landingpagesummary_trip(tripId):
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one({'_id': ObjectId(tripId)})
     return render_template("landingpagesummary.html", tripInfo=tripInfo)
     
-
-
 @app.route('/edit/<tripId>')
 def edit_trip(tripId):
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one({'_id': ObjectId(tripId)})
@@ -99,6 +113,7 @@ def edit_trip(tripId):
 
 @app.route('/edit_trip', methods=['POST'])
 def update_trip():
+    tripId=request.values.get("_id") 
     name = request.form['name']
     country = request.form['country']
     city = request.form['city']
@@ -110,7 +125,7 @@ def update_trip():
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
     file = request.files['photo']
-    tripId=request.values.get("_id")  
+   
     
     imageUrl = ''
     if file.filename != '':
@@ -119,7 +134,7 @@ def update_trip():
         imageUrl = url_for('uploaded_file', filename=filename)
 
  
-        conn[DATABASE_NAME][COLLECTION_NAME].update_one({'_id': ObjectId(tripId)},
+        tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].update({'_id': ObjectId(tripId)},
 
         { "$set": {
         "name": request.form['name'],
@@ -136,9 +151,21 @@ def update_trip():
                              }
                  })
 
-    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename)
+        return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename)
 
-if __name__ == '__main__':
+
+@app.route('/delete_trip/<tripId>')
+def delete_trip(tripId):
+    tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one_and_delete({'_id': ObjectId(tripId)})
+    return render_template("delete.html", tripInfo=tripInfo) 
+
+@app.route('/list')
+def list_trip():
+    return render_template("list.html")
+
+
+    
+if __name__ == '__main__': 
     app.run(host=os.environ.get('IP'),port=int(os.environ.get('PORT')),debug=True)
     
 

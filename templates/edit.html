@@ -14,20 +14,21 @@
 
     <div class="container">
         <div class="row">
-            
+           
             <div class="col-sm-12">
                 <form class='sign-up-form' action="/edit_trip" method="post" enctype="multipart/form-data">
                     <br><br>
                     <h2 class='text-center'>Edit Your Travel Journey!</h2>
                     <br>
-                    
+                    <input class="form-control" name="_id" value="{{tripInfo._id}}" hidden>
+                    <br>
                     User First Name:<input class="form-control" name="name" value="{{tripInfo.name}}" type="text" required>
                     <br>
                     Trip Title:<input class="form-control" name="triptitle" value="{{tripInfo.triptitle}}" placeholder="Enter Trip Title" type="text" required>
                     <br>
-                    Country of Visit:<input class="form-control" name="country" value="{{tripInfo.country}}" placeholder="Enter Country of Visit" type="text" required>
-                    <br>
-                    City Name:<input class="form-control" name="city" value="{{tripInfo.city}}" placeholder="Enter City Name" type="text">
+                    Country of Visit: <input class="forms-control" name="country" value="{{tripInfo.country}}" placeholder="Enter Country of Visit" type="text" required>
+                    <br><br>
+                    City Name: <input class="form-control" name="city" value="{{tripInfo.city}}" placeholder="Enter City Name" type="text">
                     <br>
                     Starting Date: 
                     <input type="text" name="sd" value="{{tripInfo.startdate}}" placeholder="DD/MM/YYYY"
@@ -56,12 +57,15 @@
                     id="photo" name="photo"
                     accept="image/png, image/jpeg" required>
                     <br><br>
-                    <button type="submit" value="submit" class="btn btn-info center-block">Edit Trip </button><br><br>
+                   
+                    <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Previous Page</a>
+                    <button type="submit" value="submit" class="btn btn-info center-block">Edit Trip </button><br>
+                   
                 </form>
             </div>
-        </div>
+         </div>
     </div>
-
+<br>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
