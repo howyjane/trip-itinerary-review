@@ -25,30 +25,23 @@ def index():
 
 @app.route('/search_trip', methods=['POST','GET'])
 def search_trip():
-    
-    tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find().sort("country",1)
-    tripInfo2 = conn[DATABASE_NAME][COLLECTION_NAME].find().sort("city",1)
-    tripInfo3 = conn[DATABASE_NAME][COLLECTION_NAME].find().sort("city",1)
-    return render_template("search.html", tripInfo=tripInfo, tripInfo2=tripInfo2,tripInfo3=tripInfo3) 
-    
-@app.route('/search_results', methods=['POST','GET'])
-def search_results():
-    
-    tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find()
-    return render_template("searchresults.html", tripInfo=tripInfo) 
+    countries = conn[DATABASE_NAME][COLLECTION_NAME].distinct('country')
+    cities = conn[DATABASE_NAME][COLLECTION_NAME].distinct('city')
+    users = conn[DATABASE_NAME][COLLECTION_NAME].distinct('name')
+    return render_template("search.html", countries=countries, cities=cities, users=users) 
 
-@app.route("/search_trip", methods=['POST','GET'])  
-def search():  
-    #Searching a Task with various references  
-  
-    tripId=request.values.get("_id") 
-    country = request.form['country']
-   
-    if(tripId=="_id",country=="country"):  
-         tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find()({'_id': ObjectId(tripId)})
-    else:  
-        return 'no records found'
-    return render_template('search.html',tripInfo=tripInfo)
+@app.route("/search_results", methods=['POST'])  
+def search_results():  
+    query = {}
+    if request.form.get('country') != None:
+        query['country'] = request.form.get('country')
+    if request.form.get('city') != None:
+        query['city'] = request.form.get('city')
+    if request.form.get('name') != None:
+        query['name'] = request.form.get('name')
+
+    tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find(query)
+    return render_template('searchresults.html',tripInfo=tripInfo)
 
 @app.route('/searchlandingpagesummarytrip/<tripId>')
 def searchlandingpagesummary_trip(tripId):
@@ -111,6 +104,7 @@ def summary_trip():
 def landingpagesummary_trip(tripId):
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find_one({'_id': ObjectId(tripId)})
     return render_template("landingpagesummary.html", tripInfo=tripInfo)
+
     
 @app.route('/edit/<tripId>')
 def edit_trip(tripId):

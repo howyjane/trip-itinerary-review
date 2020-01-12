@@ -57,7 +57,7 @@
 
             <small class="text-muted">Posted by {{tripInfo.name}}</small>
             <hr>
-            <a href="{{url_for('search_results', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+            <a href="{{url_for('search_trip', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
             <a href="{{url_for('edit_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Edit Trip</a>
             <a href="{{url_for('delete_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">Delete Trip</a>
     

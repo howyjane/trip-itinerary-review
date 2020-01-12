@@ -26,7 +26,9 @@
                     <br>
                     Trip Title:<input class="form-control" name="triptitle" value="{{tripInfo.triptitle}}" placeholder="Enter Trip Title" type="text" required>
                     <br>
-                    Country of Visit: <input class="forms-control" name="country" value="{{tripInfo.country}}" placeholder="Enter Country of Visit" type="text" required>
+                    
+                    Please select country : <select id="countries" name="country"></select>
+                    
                     <br><br>
                     City Name: <input class="form-control" name="city" value="{{tripInfo.city}}" placeholder="Enter City Name" type="text">
                     <br>
@@ -45,7 +47,7 @@
                     <br>
                     Your Trip Review: <input class="form-control" name="tripreview" value="{{tripInfo.tripreview}}" placeholder="Enter Your Trip Review" type="text" required>
                     <br>
-                    Trip Ratings: <Input type="number" name="ratings" id="myNumber" value="{{tripInfo.ratings}}" placeholder="Enter Your Trip Ratings" required min="1" step="0.1" max="5" value="0" pattern="[0-9]*" /><br>
+                    Trip Ratings: <Input type="number" name="ratings" id="myNumber" value="{{tripInfo.ratings}}" placeholder="Enter Your Trip Ratings" required min="1" step="0.5" max="5" value="0" pattern="[0-9]*" /><br>
                     <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
                     Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" value="{{tripInfo.totalestimatedcost}}"required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
                     <br><br>
@@ -87,6 +89,32 @@
                     
  document.getElementById("display").value = this.value.replace(/,/g, "")
 }
+</script>
+
+  <script>const countriesList = document.getElementById("countries");
+
+    function newCountrySelection(event) {
+      displayCountryInfo(event.target.value);
+}
+
+  fetch("https://restcountries.eu/rest/v2/all")
+  .then(res => res.json())
+  .then(data => initialize(data))
+  .catch(err => console.log("Error:", err));
+
+function initialize(countriesData) {
+  countries = countriesData;
+  let options = "";
+
+  countries.forEach(country => options+=`<option value="${country.name}">${country.name}</option>`);
+
+  countriesList.innerHTML = options;
+
+  countriesList.selectedIndex = Math.floor(Math.random()*countriesList.length);
+
+}
+
+
 </script>
 </body>
 </html>

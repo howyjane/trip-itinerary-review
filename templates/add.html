@@ -23,19 +23,10 @@
                     <br>
                     <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
                     <br>
-                    <input class="form-control" name="country" placeholder="Enter Country of Visit" type="text" required>
-                    <br>
-                    Please select country : <select id="countries"></select>
+
+                    Please select country : <select id="countries" name="country"></select>
                     <br><br>
-                    Please select country : <select id="countries" name="country">
-                    <option value="country">Select Country</option>
-                    <option value="country">Singapore</option>
-                    <option value="country">Malaysia</option>
-                    </select>
 
-
-                    <br>     
-                    <br>
                     <input class="form-control" name="city" placeholder="Enter City Name" type="text">
                     <br>
                     Starting Date: 
@@ -53,7 +44,7 @@
                     <br>
                     <textarea class="form-control" name="tripreview" placeholder="Enter Your Trip Review" type="text" required></textarea>
                     <br>
-                    Ratings: <Input type="number" name="ratings" id="myNumber" placeholder="Enter Your Trip Ratings" required min="1" step="1" max="5" value="0" pattern="[0-9]*" /><br>
+                    Ratings: <Input type="number" name="ratings" id="myNumber" placeholder="Enter Your Trip Ratings" required min="1" step="0.5" max="5" value="0" pattern="[0-9]*" /><br>
                     <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
                     Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
                     <br><br>
@@ -109,7 +100,7 @@ function initialize(countriesData) {
   countries = countriesData;
   let options = "";
 
-  countries.forEach(country => options+=`<option value="${country.alpha3Code}">${country.name}</option>`);
+  countries.forEach(country => options+=`<option value="${country.name}">${country.name}</option>`);
 
   countriesList.innerHTML = options;
 
@@ -117,10 +108,7 @@ function initialize(countriesData) {
 
 }
 
-function displayCountryInfo(countryByAlpha3Code) {
-  const countryData = countries.find(country => country.alpha3Code === countryByAlpha3Code);
 
-}
 </script>
 
 </body>

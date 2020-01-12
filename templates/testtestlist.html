@@ -56,3 +56,37 @@
 
 {% endblock content %} 
 
+@app.route("/search_results", methods=['POST','GET'])  
+def search():  
+    #Searching a Task with various references  
+    if request.method == 'POST':  
+        tripId=request.values.get("_id") 
+        country = request.form['country']
+        tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find()
+    
+    for tripInfo in tripInfo:
+
+        if(tripInfo['country'] == country):  
+            return 'route found'
+        else:  
+            return 'no records found'
+    return render_template('searchresults.html',tripInfo=tripInfo)
+    
+    
+    @app.route('/search_results', methods=['POST','GET'])
+def search_results():
+    
+    tripId=request.values.get("_id") 
+  
+    if(tripId=="_id"):  
+         tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find()({'_id': ObjectId(tripId)})
+    else:  
+        return 'no records found'
+    return render_template('searchresults.html',tripInfo=tripInfo)
+    
+    var startDate = new Date($('#startDate').val());
+    var endDate = new Date($('#endDate').val());
+
+    if (startDate < endDate){
+    // Do something
+    }

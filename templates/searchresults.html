@@ -12,7 +12,6 @@
 <body>
   <!-- Page Content -->
   <div class="container">
-
     <div class="row">
       {% if tripInfo %}  
        <div class="col-lg-9">
@@ -52,16 +51,18 @@
              </tr>
              
              {% endfor %}
-            
+             <br>
+  
             </tbody>
-          </table>
-            
-            {% else %}  
-            <h4>No Records Found</h4>  
-            {% endif %}  
-            
+         </table>
+         
             <br>
             
+            {% else %}  
+            <br></br>
+            <h4>No Records Found</h4>  
+            {% endif %}<br><br?
+
             <a href="{{url_for('search_trip', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
         </div>
       </div>

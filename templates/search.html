@@ -21,15 +21,15 @@
           <br>
           <strong>Search by Country</strong>
           <br><br>
-          <form action="/search_trip"   method="GET">
+          <form action="/search_results"   method="POST">
           <select class="form-control" name="country">
           <option disabled selected>Select Country </option>
-          {% for tripInfo in tripInfo %}
-          <option value="{{tripInfo.country}}">{{tripInfo.country}}</option>
+          {% for country in countries %}
+          <option>{{country}}</option>
           {% endfor %}
           </select>
           <br>
-          <a href="{{url_for('search_results', tripInfo=tripInfo)}}" class="btn btn-info center-success">Search</a>
+          <button type="submit" class="btn btn-info center-success">Search</button>
           </form>
           <br>
             </div>
@@ -39,15 +39,15 @@
             <div class="card-header">
           <strong>Search by City</strong>
           <br><br>
-          <form action="/search_trip"   method="GET">
+          <form action="/search_results"   method="POST">
           <select class="form-control" name="city">
           <option disabled selected>Select City </option>
-          {% for tripInfo2 in tripInfo2 %}
-          <option value="{{tripInfo2.city}}">{{tripInfo2.city}}</option>
+          {% for city in cities %}
+          <option>{{city}}</option>
           {% endfor %}
           </select>
           <br>
-          <a href="{{url_for('search_results', tripInfo=tripInfo)}}" class="btn btn-info center-success">Search</a>
+          <button type="submit" class="btn btn-info center-success">Search</button>
           </form>
           <br>
             </div>
@@ -57,15 +57,15 @@
             <div class="card-header">
           <strong>Search by User</strong>
           <br><br>
-          <form action="/search_trip"   method="GET">
-          <select class="form-control" name="city">
+          <form action="/search_results"   method="POST">
+          <select class="form-control" name="name">
           <option disabled selected>Select User </option>
-          {% for tripInfo3 in tripInfo3 %}
-          <option value="{{tripInfo3.name}}">{{tripInfo3.name}}</option>
+          {% for name in users %}
+          <option>{{name}}</option>
           {% endfor %}
           </select>
           <br>
-          <a href="{{url_for('search_results', tripInfo=tripInfo)}}" class="btn btn-info center-success">Search</a>
+          <button type="submit" class="btn btn-info center-success">Search</button>
           </form>
           <br><br>
             </div>
