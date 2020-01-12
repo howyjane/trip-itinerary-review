@@ -1,0 +1,88 @@
+{% extends 'base.html' %}{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Trip Itinerary</title>
+</head>
+<body>
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-9">
+    
+       
+  
+       <div class="card mt-4">
+          <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="">
+        
+          <div class="card-body">
+           <h1 class="card-title"  style="color:purple; "><strong>{{tripInfo.country}}</strong></h1>
+            <p style=" font-size: 170%;"><strong>{{tripInfo.city}}</strong></p>
+            <p style=style="font-family: courier; font-size: 170%;"><strong>{{tripInfo.name}}'s trip ratings: {{tripInfo.ratings}} stars </strong> </p>
+            <h2 style="font-size: 150%; font-family: courier;"><strong>"{{tripInfo.triptitle}}"</strong></h2>
+            <p class="card-text" style="font-size: 100%; font-family: courier; ">{{tripInfo.tripreview}}</p>
+
+          </div>
+        
+        </div>
+         
+        <!-- /.card -->
+
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Recommended Attractions
+          </div>
+          <div class="card-body">
+           <p style="font-size: 100%; font-family: courier; ">{{tripInfo.tripattraction}}</p>
+            <br>
+          </div>
+        </div>
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Additional Information
+          </div>
+          <div class="card-body">
+            <p>Trip Start Date: {{tripInfo.startdate}}</p>
+            <p>Trip End Date: {{tripInfo.enddate}}</p>
+            <p>Total Estimated Cost of Trip: USD {{tripInfo.totalestimatedcost}}</p>
+          </div>
+        </div>
+
+            <small class="text-muted">Posted by {{tripInfo.name}}</small>
+            <hr>
+            <a href="{{url_for('search_results', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+            <a href="{{url_for('edit_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Edit Trip</a>
+            <a href="{{url_for('delete_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">Delete Trip</a>
+    
+        </div>
+   
+      <!-- /.col-lg-9 -->
+    </div>
+  </div>
+
+  <!-- /.container -->
+  <br>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+{% endblock content %} 
