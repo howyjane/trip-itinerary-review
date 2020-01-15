@@ -17,3 +17,8 @@ Happy coding!
 <h1>hello</h1>
 
 <h1>hello</h1>
+
+
+ User Stories        | Description           | Features to implement  |
+| :------------- |:-------------| :-----|
+| 1      | User would like to see the latest game trailer. | To include the video game trailer on the website.  |
