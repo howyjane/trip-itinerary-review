@@ -28,7 +28,8 @@ def search_trip():
     countries = conn[DATABASE_NAME][COLLECTION_NAME].distinct('country')
     cities = conn[DATABASE_NAME][COLLECTION_NAME].distinct('city')
     users = conn[DATABASE_NAME][COLLECTION_NAME].distinct('name')
-    return render_template("search.html", countries=countries, cities=cities, users=users) 
+    dates = conn[DATABASE_NAME][COLLECTION_NAME].distinct('date')
+    return render_template("search.html", countries=countries, cities=cities, users=users,dates=dates) 
 
 @app.route("/search_results", methods=['POST'])  
 def search_results():  
@@ -39,6 +40,9 @@ def search_results():
         query['city'] = request.form.get('city')
     if request.form.get('name') != None:
         query['name'] = request.form.get('name')
+    if request.form.get('date') != None:
+        query['date'] = request.form.get('date')
+
 
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find(query)
     return render_template('searchresults.html',tripInfo=tripInfo)
@@ -66,6 +70,7 @@ def getvalue():
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
     file = request.files['photo']
+    date= datetime.now()
     
     imageUrl = ''
     if file.filename != '':
@@ -85,11 +90,11 @@ def getvalue():
         "totalestimatedcost": request.form['totalestimatedcost'],
         "ratings": request.form['ratings'],
         "imageURL":imageUrl,
-        
+        "date" : datetime.now(),
     }
     
     tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].insert_one(newTrip)
-    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename)
+    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename, date=date)
     
     
 @app.route('/uploads/<filename>')
@@ -126,7 +131,7 @@ def update_trip():
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
     file = request.files['photo']
-    
+    date= datetime.now()
    
     
     imageUrl = ''
@@ -150,10 +155,11 @@ def update_trip():
         "totalestimatedcost": request.form['totalestimatedcost'],
         "ratings": request.form['ratings'],
         "imageURL":imageUrl,
+        "date": datetime.now(),
                              }
                  })
 
-        return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename)
+        return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename,date=date)
 
 
 @app.route('/delete_trip/<tripId>')

@@ -59,7 +59,9 @@
                     id="photo" name="photo"
                     accept="image/png, image/jpeg" required>
                     <br><br>
-                   
+                    
+                    <p>Posted on {{tripInfo.date}}</p>
+                     <br> <br>
                     <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Previous Page</a>
                     <button type="submit" value="submit" class="btn btn-info center-block">Edit Trip </button><br>
                    

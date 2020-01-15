@@ -30,6 +30,7 @@
               <th scope="col">Trip Ratings</th>
               <th scope="col">Posted By</th>
               <th scope="col">Details</th>
+              <th scope="col">Post Date</th>
             </tr>
           </thead>
             <tbody>
@@ -47,6 +48,7 @@
               <td class="ratings">{{ tripInfo.ratings }}</td>
               <td class="name">{{tripInfo.name}}</td>
               <td class="details"><a href="{{url_for('searchlandingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">View Trip</a></td>
+              <td class="name">{{tripInfo.date}}</td>
               
              </tr>
              
@@ -63,7 +65,7 @@
             <h4>No Records Found</h4>  
             {% endif %}<br><br?
 
-            <a href="{{url_for('search_trip', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+             
         </div>
       </div>
     </div>
