@@ -69,14 +69,10 @@ def getvalue():
     tripattraction = request.form['tripattraction']
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
-    file = request.files['photo']
+  
     date= datetime.now()
     
-    imageUrl = ''
-    if file.filename != '':
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        imageUrl = url_for('uploaded_file', filename=filename)
+
     
     newTrip = {
         "name": request.form['name'],
@@ -89,12 +85,12 @@ def getvalue():
         "tripattraction": request.form['tripattraction'],
         "totalestimatedcost": request.form['totalestimatedcost'],
         "ratings": request.form['ratings'],
-        "imageURL":imageUrl,
+      
         "date" : datetime.now(),
     }
     
     tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].insert_one(newTrip)
-    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename, date=date)
+    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings,date=date)
     
     
 @app.route('/uploads/<filename>')
