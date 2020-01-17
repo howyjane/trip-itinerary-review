@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="style.css" rel="stylesheet" type="text/css" />
+ 
+   
     <title>Trip Itinerary</title>
 </head>
 
@@ -30,15 +31,15 @@
                     <input class="form-control" name="city" placeholder="Enter City Name" type="text">
                     <br>
                     Starting Date: 
-                    <input type="text" name="sd" placeholder="DD/MM/YYYY"
+                    <input type="text" name="sd" placeholder="DD/MM/YYYY" id="startdate" type="date" 
                     onfocus="(this.type='date')"
-                    onblur="(this.type='text')"> 
+                    > 
                     <br><br>
 
                     Ending Date : 
-                    <input type="text" name="ed" placeholder="DD/MM/YYYY"
+                    <input type="text" name="ed" placeholder="DD/MM/YYYY" id="enddate" type="date"
                     onfocus="(this.type='date')"
-                    onblur="(this.type='text')">  
+                    >  
                     <br><br>
                     <textarea class="form-control" name="tripattraction" placeholder="Your Recommended Attractions?" type="text" required></textarea>
                     <br>
@@ -73,11 +74,14 @@
     <!-- /.container -->
   </footer>
 
-<script src="script.js"></script>
-<script>function myFunction() {
+
+<script>
+
+function myFunction() {
   document.getElementById("myNumber").placeholder = "Amount";
 }
 </script>
+
 <script>document.getElementById("number").onblur =function (){    
     this.value = parseFloat(this.value.replace(/,/g, ""))
                     .toFixed(2)
@@ -86,10 +90,13 @@
                     
  document.getElementById("display").value = this.value.replace(/,/g, "")
 }
-</script>
-   <script>const countriesList = document.getElementById("countries");
 
-    function newCountrySelection(event) {
+</script>
+
+<script>
+  const countriesList = document.getElementById("countries");
+
+  function newCountrySelection(event) {
       displayCountryInfo(event.target.value);
 }
 
@@ -98,7 +105,7 @@
   .then(data => initialize(data))
   .catch(err => console.log("Error:", err));
 
-function initialize(countriesData) {
+  function initialize(countriesData) {
   countries = countriesData;
   let options = "";
 
@@ -109,11 +116,33 @@ function initialize(countriesData) {
   countriesList.selectedIndex = Math.floor(Math.random()*countriesList.length);
 
 }
+</script>
 
+<script>
+  function compareDates() {
+
+        var Startdate= new Date ('statedate');
+        var Enddate= new Date ('enddate');
+  
+        if(Startdate>Enddate)
+        {
+        alert= ("start date is greater than end date.");
+        }
+        else if(Enddate>Startdate);
+        {
+        alert= ("End date is greater than start date.");
+     
+        }       
+    }
+    
+    compareDates();
 
 </script>
 
-
+<script src="static/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 </html>

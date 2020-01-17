@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url_for('static',filename='stylesheet/style.css')}}" type="text/css">
     <title>Trip Itinerary</title>
+<style>
 
+body {background-color: powderblue;}
+</style>
 
 </head>
+
 <body>
 
-    <div class="container">
+    <div class="container" >
         
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
+    <header class="jumbotron my-4" style="background-color:white;">
       <h1 class="display-3">Welcome to Tripee.com</h1>
       <p class="lead">Planning your next trip? Share your trip review? </p>
       <a href="{{url_for('add_trip')}}" class="btn btn-info center-block">Start Your Journey Today!</a>
@@ -26,7 +30,7 @@
       {% for tripInfo in tripInfo %}
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="{{tripInfo.imageURL}}" alt="profileimg">
+          <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
           <div class="card-body">
 
             <h1 style="color:purple; " class="card-title"><strong>{{tripInfo.country}}</strong></h1>
@@ -51,7 +55,6 @@
     </div>
     </div>
 
-
     
   <!-- Footer -->
   <footer class="py-5 bg-dark">
@@ -73,4 +76,4 @@
   
 </html>
 
-{% endblock content %} 
+{% endblock content %}

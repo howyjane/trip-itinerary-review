@@ -8,6 +8,7 @@ import re
 
 
 app = Flask(__name__)
+
 app.config['UPLOAD_FOLDER'] = '/home/ubuntu/environment/uploads'
 app.config["MONGO_DBNAME"] = 'Project3'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
@@ -42,7 +43,6 @@ def search_results():
         query['name'] = request.form.get('name')
     if request.form.get('date') != None:
         query['date'] = request.form.get('date')
-
 
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find(query)
     return render_template('searchresults.html',tripInfo=tripInfo)
