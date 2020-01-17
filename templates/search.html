@@ -53,39 +53,41 @@
             </div>
           </div>
           
+
+          
           <div class="card card-outline-secondary my-4">
             <div class="card-header">
-          <strong>Search by User</strong>
+          <strong>Search by Trip Category</strong>
           <br><br>
           <form action="/search_results"   method="POST">
-          <select class="form-control" name="name">
-          <option value="Select User">Select User </option>
-          {% for name in users %}
-          <option>{{name}}</option>
+          <select class="form-control" name="tripcategory">
+          <option value="Select Trip Category">Select Category </option>
+          {% for tripcategory in categories %}
+          <option>{{tripcategory}}</option>
           {% endfor %}
           </select>
           <br>
           <button type="submit" class="btn btn-info center-success">Search</button>
           </form>
-          <br><br>
+          <br>
             </div>
           </div>
           
           <div class="card card-outline-secondary my-4">
             <div class="card-header">
-          <strong>Search by Date</strong>
-          <br><br>
-          <form action="/search_results"   method="POST">
-          <select class="form-control" name="date">
-          <option value="Select Date">Select Date </option>
-          {% for date in dates %}
-          <option>{{date}}</option>
-          {% endfor %}
-          </select>
-          <br>
-          <button type="submit" class="btn btn-info center-success">Search</button>
-          </form>
-          <br>
+            <strong>Search by User</strong>
+            <br><br>
+              <form action="/search_results"   method="POST">
+              <select class="form-control" name="name">
+              <option value="Select User">Select User </option>
+              {% for name in users %}
+              <option>{{name}}</option>
+              {% endfor %}
+              </select>
+              <br>
+              <button type="submit" class="btn btn-info center-success">Search</button>
+              </form>
+              <br><br>
             </div>
           </div>
           <br>

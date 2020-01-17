@@ -29,8 +29,8 @@ def search_trip():
     countries = conn[DATABASE_NAME][COLLECTION_NAME].distinct('country')
     cities = conn[DATABASE_NAME][COLLECTION_NAME].distinct('city')
     users = conn[DATABASE_NAME][COLLECTION_NAME].distinct('name')
-    dates = conn[DATABASE_NAME][COLLECTION_NAME].distinct('date')
-    return render_template("search.html", countries=countries, cities=cities, users=users,dates=dates) 
+    categories = conn[DATABASE_NAME][COLLECTION_NAME].distinct('tripcategory')
+    return render_template("search.html", countries=countries, cities=cities, users=users,categories=categories) 
 
 @app.route("/search_results", methods=['POST'])  
 def search_results():  
@@ -41,8 +41,8 @@ def search_results():
         query['city'] = request.form.get('city')
     if request.form.get('name') != None:
         query['name'] = request.form.get('name')
-    if request.form.get('date') != None:
-        query['date'] = request.form.get('date')
+    if request.form.get('tripcategory') != None:
+        query['tripcategory'] = request.form.get('tripcategory')
 
     tripInfo = conn[DATABASE_NAME][COLLECTION_NAME].find(query)
     return render_template('searchresults.html',tripInfo=tripInfo)
@@ -62,35 +62,39 @@ def getvalue():
     name = request.form['name']
     country = request.form['country']
     city = request.form['city']
-    startdate = request.form['sd']
-    enddate = request.form['ed']
+    tripcategory=request.form['tripcategory']
+    lengthoftrip=request.form['lengthoftrip']
     triptitle = request.form['triptitle']
     tripreview = request.form['tripreview']
     tripattraction = request.form['tripattraction']
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
-  
+    file = request.files['photo']
     date= datetime.now()
     
-
+    imageUrl = ''
+    if file.filename != '':
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imageUrl = url_for('uploaded_file', filename=filename)
     
     newTrip = {
         "name": request.form['name'],
         "country": request.form['country'],
         "city": request.form['city'],
-        "startdate": request.form['sd'],
-        "enddate": request.form['ed'],
+        "tripcategory":request.form['tripcategory'],
+        "lengthoftrip":request.form['lengthoftrip'],
         "triptitle": request.form['triptitle'],
         "tripreview": request.form['tripreview'],
         "tripattraction": request.form['tripattraction'],
         "totalestimatedcost": request.form['totalestimatedcost'],
         "ratings": request.form['ratings'],
-      
+        "imageURL":imageUrl,
         "date" : datetime.now(),
     }
     
     tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].insert_one(newTrip)
-    return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings,date=date)
+    return render_template("summary.html", n=name, c=country, cc=city, sd=lengthoftrip, cat=tripcategory, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename, date=date)
     
     
 @app.route('/uploads/<filename>')
@@ -119,43 +123,38 @@ def update_trip():
     name = request.form['name']
     country = request.form['country']
     city = request.form['city']
-    startdate = request.form['sd']
-    enddate = request.form['ed']
+    tripcategory=request.form['tripcategory']
+    lengthoftrip=request.form['lengthoftrip']
     triptitle = request.form['triptitle']
     tripreview = request.form['tripreview']
     tripattraction = request.form['tripattraction']
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
-    file = request.files['photo']
+ 
     date= datetime.now()
    
-    
-    imageUrl = ''
-    if file.filename != '':
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        imageUrl = url_for('uploaded_file', filename=filename)
+
 
  
-        tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].update({'_id': ObjectId(tripId)},
+    tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].update({'_id': ObjectId(tripId)},
 
         { "$set": {
         "name": request.form['name'],
         "country": request.form['country'],
         "city": request.form['city'],
-        "startdate": request.form['sd'],
-        "enddate": request.form['ed'],
+        "tripcategory":request.form['tripcategory'],
+        "lengthoftrip":request.form['lengthoftrip'],
         "triptitle": request.form['triptitle'],
         "tripreview": request.form['tripreview'],
         "tripattraction": request.form['tripattraction'],
         "totalestimatedcost": request.form['totalestimatedcost'],
         "ratings": request.form['ratings'],
-        "imageURL":imageUrl,
+      
         "date": datetime.now(),
                              }
                  })
 
-        return render_template("summary.html", n=name, c=country, cc=city, sd=startdate, ed=enddate, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, filename=filename,date=date)
+    return render_template("summary.html", n=name, c=country, cc=city, sd=lengthoftrip, cat=tripcategory, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, date=date)
 
 
 @app.route('/delete_trip/<tripId>')

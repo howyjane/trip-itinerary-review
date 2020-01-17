@@ -25,23 +25,20 @@
                     <br>
                     <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
                     <br>
-
+                    <select class="form-control" name="tripcategory">
+                    <option disabled selected>Select Category of Trip</option>
+                    <option >Leisure</option>
+                    <option >Family</option>
+                    <option >Work</option>
+                    <option >Others</option>
+                    </select>
+                    <br>
+                    Length of Trip (Days): <Input type="number" name="lengthoftrip" id="myNumber" placeholder="Enter Total Number of Days" required min="1" step="0.5" max="90" value="0" pattern="[0-9]*" /><br>
+                    <br>
                     Please select country : <select id="countries" name="country"></select>
                     <br><br>
-
                     <input class="form-control" name="city" placeholder="Enter City Name" type="text">
                     <br>
-                    Starting Date: 
-                    <input type="text" name="sd" placeholder="DD/MM/YYYY" id="startdate" type="date" 
-                    onfocus="(this.type='date')"
-                    > 
-                    <br><br>
-
-                    Ending Date : 
-                    <input type="text" name="ed" placeholder="DD/MM/YYYY" id="enddate" type="date"
-                    onfocus="(this.type='date')"
-                    >  
-                    <br><br>
                     <textarea class="form-control" name="tripattraction" placeholder="Your Recommended Attractions?" type="text" required></textarea>
                     <br>
                     <textarea class="form-control" name="tripreview" placeholder="Enter Your Trip Review" type="text" required></textarea>
@@ -51,7 +48,10 @@
                     Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
                     <br><br>
                     <label for="">Insert Your Trip Profile Image:</label><br>
-          
+                    <input type="file"
+                    id="photo" name="photo"
+                    accept="image/png, image/jpeg">
+                    <br><br>
                     Posted on: {{date}}
                     
                     <br><br>
