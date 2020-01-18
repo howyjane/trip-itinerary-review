@@ -2,8 +2,7 @@
 
 body{
 
-  
-
+ 
   /* Background styles */
   background-image: url('/static/images/background_image.jpeg');
   background-size: cover;
@@ -21,8 +20,8 @@ body{
 
 
 .content-wrapper{
-  background-color:rgb(1, 1, 1,0.3);
-  height:127vh;
+  background-color:rgba(1, 1, 1,0.3);
+  height:135vh;
     
   /* Text styles */
   text-align: left;
@@ -35,6 +34,45 @@ body{
 .container{
   background-color:rgba(0, 0, 0, 0.39);
   padding:10px 15px 30px;
+  
+}
+
+
+
+.content-wrapper2{
+  background-color:rgba(1, 1, 1,0.3);
+  height:200vh;
+    
+  /* Text styles */
+  text-align: left;
+  color:whitesmoke;
+  font-size:1.09em;
+  font-family:Arial;
+  
+}
+
+.container2{
+  background-color:rgba(0, 0, 0, 0.39);
+  padding:10px 25px 30px;
+  
+}
+
+
+.content-wrapper3{
+  background-color:rgba(1, 1, 1,0.3);
+  height:200vh;
+    
+  /* Text styles */
+  text-align: left;
+  color:whitesmoke;
+  font-size:1.09em;
+  font-family:Arial;
+  
+}
+
+.container3{
+  background-color:rgba(0, 0, 0, 0.39);
+  padding:10px 10px 10px;
   
 }
 
