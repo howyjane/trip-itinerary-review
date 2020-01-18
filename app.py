@@ -9,7 +9,8 @@ import re
 
 app = Flask(__name__)
 
-app.config['UPLOAD_FOLDER'] = '/home/ubuntu/environment/uploads'
+# app.config['UPLOAD_FOLDER'] = './static/uploads'
+app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads')
 app.config["MONGO_DBNAME"] = 'Project3'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 conn = pymongo.MongoClient('mongodb+srv://root:rOOtUser@clusterjane-dczgp.mongodb.net/test?retryWrites=true&w=majority')
@@ -119,6 +120,7 @@ def edit_trip(tripId):
 
 @app.route('/edit_trip', methods=['POST'])
 def update_trip():
+    print(request.form)
     tripId=request.values.get("_id") 
     name = request.form['name']
     country = request.form['country']
@@ -130,31 +132,35 @@ def update_trip():
     tripattraction = request.form['tripattraction']
     ratings = request.form['ratings']
     totalestimatedcost = request.form['totalestimatedcost']
- 
+    file = request.files['photo']
     date= datetime.now()
    
-
+    imageUrl = ''
+    if file.filename != '':
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imageUrl = url_for('uploaded_file', filename=filename)
 
  
     tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].update({'_id': ObjectId(tripId)},
 
-        { "$set": {
-        "name": request.form['name'],
-        "country": request.form['country'],
-        "city": request.form['city'],
-        "tripcategory":request.form['tripcategory'],
-        "lengthoftrip":request.form['lengthoftrip'],
-        "triptitle": request.form['triptitle'],
-        "tripreview": request.form['tripreview'],
-        "tripattraction": request.form['tripattraction'],
-        "totalestimatedcost": request.form['totalestimatedcost'],
-        "ratings": request.form['ratings'],
-      
-        "date": datetime.now(),
+    { "$set": {
+    "name": request.form['name'],
+    "country": request.form['country'],
+    "city": request.form['city'],
+    "tripcategory":request.form['tripcategory'],
+    "lengthoftrip":request.form['lengthoftrip'],
+    "triptitle": request.form['triptitle'],
+    "tripreview": request.form['tripreview'],
+    "tripattraction": request.form['tripattraction'],
+    "totalestimatedcost": request.form['totalestimatedcost'],
+    "ratings": request.form['ratings'],
+    "imageURL":imageUrl,
+    "date": datetime.now(),
                              }
                  })
 
-    return render_template("summary.html", n=name, c=country, cc=city, sd=lengthoftrip, cat=tripcategory, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, date=date)
+    return render_template("summary.html", n=name, c=country, cc=city, sd=lengthoftrip, cat=tripcategory, tt=triptitle, rv=tripreview, a=tripattraction, ct=totalestimatedcost, r=ratings, date=date, filename=filename)
 
 
 @app.route('/delete_trip/<tripId>')

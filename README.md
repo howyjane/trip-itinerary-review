@@ -12,18 +12,23 @@ To get started, create some files, play with the terminal,
 or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 
 Happy coding!
-# trip_itinerary_review
+# Trip Itineraries and reviews
 
-# Milestone Project: Dying Light
+# 3nd Coding Project:  Code Institute 
 
-This project focuses on the website development for the video game called "Dying Light". The website was built with the intention of introducing the game, Dying Light to users. The website is designed to be intuitive and easy to navigate. It is targeted towards users interested to find out more about the game with the eventual goal to purchase it. The website aims to advertise the game in an appealing and positive manner which would drive sales. Additionally, it provides users with all the essential information they need to know about the game. 
-
-## Demo
-
-A live demo of the website can be found here: 
+This is my 3rd coding project. In this project I created a CRUD website for users to post their travel reviews.
+This website caters to anyone who wish to share their travel itineraries and reviews. Any users can use the website to search or post a trip review. They can also make edits to their trip reviews.
+This is a responsive website and the design is simple and easy to use. At the same time, the tools that I have created will respond to the user’s actions and displays information based on users requests.
 
 
 ## Project Strategy and Scope
+
+The key intention of this project is to create a CRUD project linking mongodb database to display data on the website and users can create, read, update and delete records from the website.
+As part of the design process, I have saved the wireframes in folder: ‘imagewireframes’. To view the jpg images, please change size view to 20%.
+There is no ER diagram for this project mainly because I am using mongodb instead of mysql . Mongodb creates a unique object ID for each record in my collection and the fields are link to the object ID.
+
+
+The key intention of this website is to attract users who are planning for their next holiday and for those who had travelled to any countries, they can utilise the platform to share their experiences to members of the public. 
 ### User Stories
 
 | User Stories        | Description           | Features to implement  |
@@ -84,7 +89,7 @@ HTML was used to structure the content of the website.
 2. CSS (link to the documentation: https://devdocs.io/css/)
 CSS was used to style the website.
 3. Bootstrap (link to the documentation: https://getbootstrap.com)
-4. Javascript — for the navigation bar. (link to the documentation: https://devdocs.io/jsdoc/)
+4. Javascript — for country dropdown. (link to the documentation: https://devdocs.io/jsdoc/)
 
 ## Testing
 (i) Mobile Responsiveness

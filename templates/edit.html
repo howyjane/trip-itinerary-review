@@ -48,9 +48,13 @@
                     <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
                     Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" value="{{tripInfo.totalestimatedcost}}"required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
                     <br><br>
-                    
+                    <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
+                    <label for="">Insert Your Trip Profile Image:</label><br>
+                    <input type="file"
+                    id="photo" name="photo"
+                    accept="image/png, image/jpeg">
+                    <br><br>
 
-                    
                     <p>Posted on {{tripInfo.date}}</p>
                      <br> <br>
                     <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Previous Page</a>
@@ -62,22 +66,12 @@
     </div>
 <br>
 
+<script src="/static/script.js"></script>
 
-<script>function myFunction() {
-  document.getElementById("myNumber").placeholder = "Amount";
-}
-</script>
-<script>document.getElementById("number").onblur =function (){    
-    this.value = parseFloat(this.value.replace(/,/g, ""))
-                    .toFixed(2)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                    
- document.getElementById("display").value = this.value.replace(/,/g, "")
-}
-</script>
 
-  <script>const countriesList = document.getElementById("countries");
+<script>
+
+const countriesList = document.getElementById("countries");
 
     function newCountrySelection(event) {
       displayCountryInfo(event.target.value);
