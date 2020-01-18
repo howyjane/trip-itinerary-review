@@ -9,7 +9,6 @@ import re
 
 app = Flask(__name__)
 
-# app.config['UPLOAD_FOLDER'] = './static/uploads'
 app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads')
 app.config["MONGO_DBNAME"] = 'Project3'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
@@ -136,7 +135,7 @@ def update_trip():
     date= datetime.now()
    
     imageUrl = ''
-    if file.filename != '':
+    if file.filename != '': 
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         imageUrl = url_for('uploaded_file', filename=filename)

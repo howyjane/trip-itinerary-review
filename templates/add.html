@@ -1,4 +1,3 @@
-{% extends 'base.html' %}{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-   
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheet/style.css')}}" type="text/css">
     <title>Trip Itinerary</title>
 </head>
 
 <body>
+  
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{url_for('index')}}">Tripee.com</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('search_trip')}}">Search Trip <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('add_trip')}}">Add Trip <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
               
                 <form class='sign-up-form' action="/add_trip" method="post" enctype="multipart/form-data">
                     <br><br>
@@ -25,14 +42,13 @@
                     <br>
                     <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
                     <br>
-                    <select class="form-control" name="tripcategory">
-                    <option disabled selected>Select Category of Trip</option>
+                    Select Trip Category : <select name="tripcategory">
                     <option >Leisure</option>
-                    <option >Family</option>
                     <option >Work</option>
+                    <option >Family</option>
                     <option >Others</option>
                     </select>
-                    <br>
+                    <br><br>
                     Length of Trip (Days): <Input type="number" name="lengthoftrip" id="myNumber" placeholder="Enter Total Number of Days" required min="1" step="0.5" max="90" value="0" pattern="[0-9]*" /><br>
                     <br>
                     Please select country : <select id="countries" name="country"></select>
@@ -50,93 +66,24 @@
                     <label for="">Insert Your Trip Profile Image:</label><br>
                     <input type="file"
                     id="photo" name="photo"
-                    accept="image/png, image/jpeg">
+                    accept="image/png, image/jpeg" required>
                     <br><br>
                     Posted on: {{date}}
-                    
-                    <br><br>
-                  
-                    <a href="{{url_for('index')}}" class="btn btn-info center-success">Previous Page</a>
-                    <button type="submit" value="submit" class="btn btn-info center-block">Add Trip </button><br>
-                    
+              
+
                 </form>
-               
             </div>
         </div>
     </div>
-<br>
 
+    <br>            
+    <a href="{{url_for('index')}}" class="btn btn-info center-success">Previous Page</a>
+    <button type="submit" value="submit" class="btn btn-info center-block">Add Trip </button><br>
+    <br>
 
-
-<script>function myFunction() {
-  document.getElementById("myNumber").placeholder = "Amount";
-}
-</script>
-<script>document.getElementById("number").onblur =function (){    
-    this.value = parseFloat(this.value.replace(/,/g, ""))
-                    .toFixed(2)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                    
- document.getElementById("display").value = this.value.replace(/,/g, "")
-}
-
-</script>
-
-<script>const countriesList = document.getElementById("countries");
-
-function newCountrySelection(event) {
-      displayCountryInfo(event.target.value);
-}
-
-  fetch("https://restcountries.eu/rest/v2/all")
-  .then(res => res.json())
-  .then(data => initialize(data))
-  .catch(err => console.log("Error:", err));
-
-function initialize(countriesData) {
-  countries = countriesData;
-  let options = "";
-
-  countries.forEach(country => options+=`<option value="${country.name}">${country.name}</option>`);
-
-  countriesList.innerHTML = options;
-
-  countriesList.selectedIndex = Math.floor(Math.random()*countriesList.length);
-
-}
-
-
-</script>
-
-<script>
-
-    function compareDates() {
-
-        var Startdate= new ('statedate');
-        var Enddate= new Date ('enddate');
-  
-        if(Startdate>Enddate)
-        {
-        alert= ("start date is greater than end date.");
-        }
-        else if(Enddate>Startdate);
-        {
-        alert= ("End date is greater than start date.");
-     
-        }       
-    }
-    
-    compareDates();
-</script>
-
-<script src="script.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/static/script.js"></script>
 
 </body>
+
 </html>
-{% endblock content %} 
 
