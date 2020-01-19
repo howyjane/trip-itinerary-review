@@ -31,16 +31,14 @@
 </nav>
 
 
-  <!-- Page Content -->
-  
-
-  <div class="container">
-     <div class="content-wrapper">
-      {% if tripInfo %}  
-       <div class="text-center col-md-auto">
-           <br>
-          <h1>Search Results</h1><br>
-            <table class="table table-bordered" style="color:white; ">
+<!-- Page Content -->
+<div class="container">
+  <div class="content-wrapper">
+  {% if tripInfo %}  
+    <div class="text-center col-md-auto">
+    <br>
+      <h1>Search Results</h1><br>
+        <table class="table table-bordered" style="color:white; ">
           <thead>
             <tr>
               <th scope="col">Trip</th>
@@ -52,16 +50,12 @@
               <th scope="col">Posted By</th>
               <th scope="col">Post Date</th>
               <th scope="col">Details</th>
-
             </tr>
           </thead>
-            <tbody>
-           
-            <tr>
-              
-              {% for tripInfo in tripInfo %}
-              <th scope="row">Trip</th>
-              
+        <tbody>
+          <tr>
+            {% for tripInfo in tripInfo %}
+            <th scope="row">Trip</th>
               <td class="_id" {{tripInfo._id}} hidden></td>
               <td class="country">{{tripInfo.country}}</td>  
               <td class="city">{{ tripInfo.city}}</td>  
@@ -71,31 +65,29 @@
               <td class="name">{{tripInfo.name}}</td>
               <td class="name">{{tripInfo.date}}</td>
               <td class="details"><a href="{{url_for('searchlandingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">View Trip</a></td>
-             
-              
-             </tr>
-             
-             {% endfor %}
-             <br>
-  
-            </tbody>
-         </table>
-         
-            <br>
-            
-            {% else %}  
-            <br></br>
-            <h4>No Records Found</h4>  
-            {% endif %}<br><br?
-
-             
-        </div>
-      </div>
+          </tr>
+          {% endfor %}
+          <br>
+          </tbody>
+        </table>
+          <br>
+          {% else %}  
+          <br></br>
+          <h4>No Records Found</h4>  
+          {% endif %}<br><br?
+          
+    <!--col-md-auto-->
     </div>
+  <!-- Content-wrapper -->
+  </div>
+<!-- Container -->
+</div>
 
-  <!-- Bootstrap core JavaScript -->
-
-  <script src="script.js"></script>
+<!-- JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>          
+<script src="/static/script.js"></script>
 
 </body>
 
