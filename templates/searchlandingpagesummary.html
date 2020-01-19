@@ -10,68 +10,65 @@
     <title>Trip Itinerary</title>
 </head>
 <body>
-  <!-- Page Content -->
-  <div class="container">
-
-    <div class="row">
-
-       <div class="col-lg-12" >
-    
-       
   
-       <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
-        
-          <div class="card-body">
-           <h1 class="card-title"  style="color:purple; "><strong>{{tripInfo.country}}</strong></h1>
-            <p style=" font-size: 170%;"><strong>{{tripInfo.city}}</strong></p>
-            <p style=style="font-family: courier; font-size: 170%;"><strong>{{tripInfo.name}}'s trip ratings: {{tripInfo.ratings}} stars </strong> </p>
-            <h2 style="font-size: 150%; font-family: courier;"><strong>"{{tripInfo.triptitle}}"</strong></h2>
-            <p class="card-text" style="font-size: 100%; font-family: courier; ">{{tripInfo.tripreview}}</p>
-
-          </div>
-        
+<!-- Page Content -->
+<!-- card -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12" >
+      <div class="card mt-4">
+      <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
+        <div class="card-body">
+          <h1 class="card-title"  style="color:purple; "><strong>{{tripInfo.country}}</strong></h1>
+          <p style=" font-size: 170%;"><strong>{{tripInfo.city}}</strong></p>
+          <p style=style="font-family: courier; font-size: 170%;"><strong>{{tripInfo.name}}'s trip ratings: {{tripInfo.ratings}} stars </strong> </p>
+          <h2 style="font-size: 150%; font-family: courier;"><strong>"{{tripInfo.triptitle}}"</strong></h2>
+          <p class="card-text" style="font-size: 100%; font-family: courier; ">{{tripInfo.tripreview}}</p>
         </div>
-         
-        <!-- /.card -->
-
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            Recommended Attractions
-          </div>
+      </div>
+      
+      <!-- card -->   
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">Recommended Attractions</div>
           <div class="card-body">
            <p style="font-size: 100%; font-family: courier; ">{{tripInfo.tripattraction}}</p>
-            <br>
+          <br>
           </div>
-        </div>
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            Additional Information
-          </div>
+      </div>
+      
+      <!-- card -->  
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">Additional Information</div>
           <div class="card-body">
             <p>Trip Category: {{tripInfo.tripcategory}}</p>
             <p>Length of Trip: {{tripInfo.lengthoftrip}} days</p>
             <p>Total Estimated Cost of Trip: USD {{tripInfo.totalestimatedcost}}</p>
           </div>
-        </div>
-            <br>
-            <small class="text-white">Posted by {{tripInfo.name}} {{tripInfo.date}}</small>
-            <hr>
-            <br>
-            <a href="{{url_for('search_trip', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
-            <a href="{{url_for('edit_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Edit Trip</a>
-            <a href="{{url_for('delete_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">Delete Trip</a>
-            <br>
-            <br>
-        </div>
-       </div>
       </div>
+      
+          <br>
+          <small class="text-white">Posted by {{tripInfo.name}} {{tripInfo.date}}</small>
+          <hr>
+          <br>
+          <!--button-->
+          <a href="{{url_for('search_trip', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+          <a href="{{url_for('edit_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Edit Trip</a>
+          <a href="{{url_for('delete_trip', tripId = tripInfo._id)}}" class="btn btn-info center-block">Delete Trip</a>
+          <br>
+           <br>
+   
+    <!-- col-lg-12 -->      
+    </div>
+  <!-- row -->
+  </div>
+<!-- Container -->
+</div>
 
-
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>          
+<script src="/static/script.js"></script>
 
 </body>
 
