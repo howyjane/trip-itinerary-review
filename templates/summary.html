@@ -9,60 +9,58 @@
     <link rel="stylesheet" href="{{url_for('static',filename='stylesheet/style.css')}}" type="text/css">
     <title>Trip Itinerary</title>
 </head>
+
 <body>
-  <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12" >
-       {% if filename %}
-       <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="{{url_for('uploaded_file', filename=filename)}}" alt="profileimg">
-          {% else %}
-           <h1>no image</h1>
-            {% endif %}
-          <div class="card-body">
-            <h1 class="card-title"  style="color:purple; "><strong>{{c}}</strong></h1>
-            <p style=" font-size: 170%;"><strong>{{cc}}</strong></p>
-            <p style="font-family: courier; font-size: 150%;"><strong>{{n}}'s trip ratings: {{r}} stars</strong></p>
-            <h2 style="font-size: 150%; font-family: courier; "><strong>"{{tt}}"</strong></h2>
-            <p class="card-text" style="font-size: 100%; font-family: courier; ">{{rv}}</p>
-
-          </div>
-        </div>
-        <!-- /.card -->
-
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            Recommended Attractions
-          </div>
+<!-- Page Content -->
+<div class="container">
+  <div class="col-md-auto" >
+    {% if filename %}
+    <div class="card mt-4">
+    <img class="card-img-top img-fluid" src="{{url_for('uploaded_file', filename=filename)}}" alt="profileimg">
+    {% else %}
+    <h1>no image</h1>
+    {% endif %}
+      <div class="card-body">
+        <h1 class="card-title"  style="color:purple; "><strong>{{c}}</strong></h1>
+        <p style=" font-size: 170%;"><strong>{{cc}}</strong></p>
+        <p style="font-family: courier; font-size: 150%;"><strong>{{n}}'s trip ratings: {{r}} stars</strong></p>
+        <h2 style="font-size: 150%; font-family: courier; "><strong>"{{tt}}"</strong></h2>
+        <p class="card-text" style="font-size: 100%; font-family: courier; ">{{rv}}</p>
+      </div>
+    </div>
+    <!--card -->
+    
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">Recommended Attractions</div>
           <div class="card-body">
             <p style="font-size: 100%; font-family: courier; ">{{a}}</p>
             <br>
           </div>
-        </div>
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            Additional Information
-          </div>
+      </div>
+        
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">Additional Information</div>
           <div class="card-body">
             <p style="font-size: 100%; font-family: courier; ">Trip Category: {{cat}}</p>
             <p style="font-size: 100%; font-family: courier; ">Length of Trip: {{sd}} days</p>
             <p style="font-size: 100%; font-family: courier; ">Total Estimated Cost of Trip: USD {{ct}}</p>
           </div>
-        </div>
-            <br>
-            <small class="text-white">Posted by {{n}} {{date}}</small>
-            <hr>
+      </div>
           <br>
+          <small class="text-white">Posted by {{n}} {{date}}</small>
+          <hr>
+          <br>
+          <!--button -->
           <a href="{{url_for('index')}}" class="btn btn-info center-success">Confirm Details</a>
           <br>
-      </div>
-    </div>
+          
+  <!--Content-wrapper -->
   </div>
- <br>
+<!--Container -->
+</div>
+<br>
 
-
-  <!-- Bootstrap core JavaScript -->
+<!--JavaScript -->
 <script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
