@@ -169,9 +169,6 @@ https://howyjane.github.io/trip_itinerary_review
 https://howytripee.herokuapp.com/ 
 
 
-## Bugs Discovered
-// Any bugs that you've discovered and has yet to be fixed.
-
 ### Media 
 
 Content & Media All content on this site is taken from https://restcountries.eu/rest/v2/all through the use of APIs, Tripadvisor and Triphobo for recommended attractions and reviews.
