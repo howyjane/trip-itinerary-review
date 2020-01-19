@@ -9,99 +9,105 @@
     <link rel="stylesheet" href="{{url_for('static',filename='stylesheet/style.css')}}" type="text/css">
     <title>Trip Itinerary</title>
 </head>
+
 <body>
-  <!-- Page Content -->
-  <div class="container">
-
   
-       <div class="col-md-12 py-2">
-          <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-          <br>
-          <strong>Search by Country</strong>
-          <br><br>
-          <form action="/search_results"   method="POST">
+<!-- Page Content -->
+<!--card-->
+<div class="container">
+  <div class="content-wrapper">
+    <br>
+    <div class="col-md-12 py-2">
+      <div class="card-header">
+        <strong>Search by Country</strong>
+        <br><br>
+        <form action="/search_results"   method="POST">
           <select class="form-control" name="country">
-          <option value ="Select Country">Select Country </option>
+            <option value ="Select Country">Select Country </option>
           {% for country in countries %}
-          <option>{{country}}</option>
+            <option>{{country}}</option>
           {% endfor %}
           </select>
-          <br>
-          <button type="submit" class="btn btn-info center-success">Search</button>
-          </form>
-          <br>
-            </div>
-          </div>
-          
-          <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-          <strong>Search by City</strong>
-          <br><br>
-          <form action="/search_results"   method="POST">
-          <select class="form-control" name="city">
-          <option value="Select City">Select City </option>
-          {% for city in cities %}
-          <option>{{city}}</option>
-          {% endfor %}
-          </select>
-          <br>
-          <button type="submit" class="btn btn-info center-success">Search</button>
-          </form>
-          <br>
-            </div>
-          </div>
-          
-
-          
-          <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-          <strong>Search by Trip Category</strong>
-          <br><br>
-          <form action="/search_results"   method="POST">
-          <select class="form-control" name="tripcategory">
-          <option value="Select Trip Category">Select Category </option>
-          {% for tripcategory in categories %}
-          <option>{{tripcategory}}</option>
-          {% endfor %}
-          </select>
-          <br>
-          <button type="submit" class="btn btn-info center-success">Search</button>
-          </form>
-          <br>
-            </div>
-          </div>
-          
-          <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-            <strong>Search by User</strong>
-            <br><br>
-              <form action="/search_results"   method="POST">
-              <select class="form-control" name="name">
-              <option value="Select User">Select User </option>
-              {% for name in users %}
-              <option>{{name}}</option>
-              {% endfor %}
-              </select>
-              <br>
-              <button type="submit" class="btn btn-info center-success">Search</button>
-              </form>
-              <br><br>
-            </div>
-          </div>
-          <br>
-          <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
-        </div>
- 
+        <br>
+        <button type="submit" class="btn btn-info center-success">Search</button>
+        </form>
+        <br>
+      </div>
     </div>
+    <br> 
+    <!--card-->
+    <div class="col-md-12 py-2">
+      <div class="card-header">
+        <strong>Search by City</strong>
+        <br><br>
+        <form action="/search_results"   method="POST">
+          <select class="form-control" name="city">
+            <option value="Select City">Select City </option>
+          {% for city in cities %}
+            <option>{{city}}</option>
+          {% endfor %}
+          </select>
+          <br>
+          <button type="submit" class="btn btn-info center-success">Search</button>
+        </form>
+        <br>
+      </div>
+    </div>
+    <br>
+    <!--card-->
+    <div class="col-md-12 py-2">
+      <div class="card-header">
+        <strong>Search by Trip Category</strong>
+        <br><br>
+        <form action="/search_results"   method="POST">
+          <select class="form-control" name="tripcategory">
+            <option value="Select Trip Category">Select Category </option>
+          {% for tripcategory in categories %}
+            <option>{{tripcategory}}</option>
+          {% endfor %}
+          </select>
+          <br>
+          <button type="submit" class="btn btn-info center-success">Search</button>
+        </form>
+        <br>
+      </div>
+    </div>
+    <br>  
+    <!--card-->
+    <div class="col-md-12 py-2">
+      <div class="card-header">
+        <strong>Search by User</strong>
+        <br><br>
+        <form action="/search_results"   method="POST">
+          <select class="form-control" name="name">
+            <option value="Select User">Select User </option>
+              {% for name in users %}
+            <option>{{name}}</option>
+              {% endfor %}
+          </select>
+          <br>
+          <button type="submit" class="btn btn-info center-success">Search</button>
+        </form>
+        <br><br>
+      </div>
+    </div>
+      <!--button-->
+    <div class="col-md-12 py-2">
+      <a href="{{url_for('index', tripInfo=tripInfo)}}" class="btn btn-info center-success">Previous Page</a>
+    </div>
+  <!--content-wrapper-->
+  </div>
+<!--container-->
+</div>
 
-  <br>
 {% endblock content %} 
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<!-- JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
+<script src="/static/script.js"></script>
+  
 </body>
 
 </html>
