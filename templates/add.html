@@ -10,12 +10,12 @@
 </head>
 
 <body>
-  
+<!--nav bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{url_for('index')}}">Tripee.com</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -29,63 +29,62 @@
   </div>
 </nav>
 
-    <div class="container">
-        <div class="content-wrapper">
-          
-                <div class="col-md-12">
-              
-                <form class='sign-up-form' action="/add_trip" method="post" enctype="multipart/form-data">
-                    <br><br>
-                    <h2 class='text-center'>Add Your Travel Journey!</h2>
-                    <br>
-                    <input class="form-control" name="name" placeholder="Enter Your First Name" type="text" required>
-                    <br>
-                    <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
-                    <br>
-                    Select Trip Category : <select name="tripcategory">
-                    <option >Leisure</option>
-                    <option >Work</option>
-                    <option >Family</option>
-                    <option >Others</option>
-                    </select>
-                    <br><br>
-                    Length of Trip (Days): <Input type="number" name="lengthoftrip" id="myNumber" placeholder="Enter Total Number of Days" required min="1" step="0.5" max="90" value="0" pattern="[0-9]*" /><br>
-                    <br>
-                    Please select country : <select id="countries" name="country"></select>
-                    <br><br>
-                    <input class="form-control" name="city" placeholder="Enter City Name" type="text">
-                    <br>
-                    <textarea class="form-control" name="tripattraction" placeholder="Your Recommended Attractions?" type="text" required></textarea>
-                    <br>
-                    <textarea class="form-control" name="tripreview" placeholder="Enter Your Trip Review" type="text" required></textarea>
-                    <br>
-                    Ratings: <Input type="number" name="ratings" id="myNumber" placeholder="Enter Your Trip Ratings" required min="1" step="0.5" max="5" value="0" pattern="[0-9]*" /><br>
-                    <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
-                    Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
-                    <br><br>
-                    <label for="">Insert Your Trip Profile Image:</label><br>
-                    <input type="file"
-                    id="photo" name="photo"
-                    accept="image/png, image/jpeg" required>
-                    <br><br>
-                    Posted on: {{date}}
-                  <br><br>
-                  <a href="{{url_for('index')}}" class="btn btn-info center-success">Previous Page</a>
-                  <button type="submit" value="submit" class="btn btn-info center-block">Add Trip </button><br>
-                  <br>
-                </form>
-              </div>
-            </div>
-  
-
-    
+<!--form content-->
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="col-md-auto">
+        <form class='sign-up-form' action="/add_trip" method="post" enctype="multipart/form-data">
+          <br><br>
+          <h2 class='text-center'>Add Your Travel Journey!</h2><br>
+            <input class="form-control" name="name" placeholder="Enter User Name" type="text" required>
+            <br>
+            <input class="form-control" name="triptitle" placeholder="Enter Trip Title" type="text" required>
+            <br>
+            Please select country : <select id="countries" name="country" required></select></label>
+            <br><br>
+            <input class="form-control" name="city" placeholder="Enter City Name" type="text">
+            <br>
+            <textarea class="form-control" name="tripattraction" placeholder="Your Recommended Attractions?" type="text" required></textarea>
+            <br>
+            <textarea class="form-control" name="tripreview" placeholder="Enter Your Trip Review" type="text" required></textarea>
+            <br>
+            Ratings: <Input type="number" name="ratings" id="myNumber" placeholder="Enter Your Trip Ratings" required min="1" step="0.5" max="5" value="0" pattern="[0-9]*" /></label>
+            <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
+            Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
+            <br><br>
+            Select Trip Category : <select name="tripcategory">
+              <option >Leisure</option>
+              <option >Work</option>
+              <option >Family</option>
+              <option >Others</option>
+            </select>
+            <br><br>
+            Length of Trip (Days): <Input type="number" name="lengthoftrip" id="myNumber" placeholder="Enter Total Number of Days" required min="1" step="0.5" max="90" value="0" pattern="[0-9]*"/>
+            <br><br>
+            <label for="profileimage">Insert Trip Profile Image:</label><br>
+              <input type="file"
+              id="photo" name="photo" accept="image/png, image/jpeg" required>
+              <br><br>
+            <p>Posted on: {{date}}</p>
+            <br>
+                    
+            <a href="{{url_for('index')}}" class="btn btn-info center-success">Previous Page</a>
+            <button type="submit" value="submit" class="btn btn-info center-block">Add Trip </button><br><br>
+            <br>
+        </form>
+      <!--col-md-auto-->  
+      </div>
+    <!--content-wrapper-->    
     </div>
-
-
-
+  <!--container-->  
+  </div>
+  
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>          
 <script src="/static/script.js"></script>
 
 </body>
 
 </html>
-
