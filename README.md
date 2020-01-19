@@ -150,7 +150,7 @@ The site has been deployed using github and Heroku:
 
 The app live at :
 
-https://howyjane.github.io/trip_itinerary_review
+https://howyjane.github.io/trip-itinerary-review
 
 https://howytripee.herokuapp.com/ 
 
