@@ -14,135 +14,217 @@ or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 Happy coding!
 # Trip Itineraries and reviews
 
-# 3nd Coding Project:  Code Institute 
+# 3nd Coding Project:  Code Institute Data Centric Development Milestone Project 
 
 This is my 3rd coding project. In this project I created a CRUD website for users to post their travel reviews.
 This website caters to anyone who wish to share their travel itineraries and reviews. Any users can use the website to search or post a trip review. They can also make edits to their trip reviews.
-This is a responsive website and the design is simple and easy to use. At the same time, the tools that I have created will respond to the user’s actions and displays information based on users requests.
+This is a responsive website and the design is simple and easy to use. At the same time, the tools that I have created will respond to the user’s actions and displays information based on users’ requests.
 
 
 ## Project Strategy and Scope
 
-The key intention of this project is to create a CRUD project linking mongodb database to display data on the website and users can create, read, update and delete records from the website.
-As part of the design process, I have saved the wireframes in folder: ‘imagewireframes’. To view the jpg images, please change size view to 20%.
-There is no ER diagram for this project mainly because I am using mongodb instead of mysql . Mongodb creates a unique object ID for each record in my collection and the fields are link to the object ID.
+The key intention of this project is to create a CRUD project linking mongodb database to display user data on the website and any users can create, read, update and delete records from the website.
+As part of the design process, I have saved the wireframes in folder: /static/imagewireframes. To view the jpg images, please change size view to 20%.
 
+There is no ER diagram for this project because I use Mongodb instead of mysql . Mongodb creates a unique object ID for each record in my collection and all input fields are link to the object ID.
 
-The key intention of this website is to attract users who are planning for their next holiday and for those who had travelled to any countries, they can utilise the platform to share their experiences to members of the public. 
 ### User Stories
 
-| User Stories        | Description           | Features to implement  |
-| :------------- |:-------------| :-----|
-| 1      | User would like to see the latest game trailer. | To include the video game trailer on the website.  |
-| 2      | User would like to know more about the game. | To include an about section that gives more information about the game.  |
-| 3      | User would like to see the various gameplay features in the game. | To include more information on the gameplay features in the game.  |
-| 4      | User would like to purchase the game. | To include a buy now section that leads them to the official purchase page.  |
-| 5      | User would like to purchase the game in either console or pc. | To include a buy now section that leads them to the official purchase page of both console (PS4/XBOX) and PC (STEAM).  |
-| 6      | User would like to subscribe to the latest news and updates about the game. | To include a section in the buy now page that lets them enter their email and "subscribe".  |
+The key intention of this website is to attract users who are planning for their next holiday and for those who had visited to any countries, they can utilise the platform to share their experiences to members of the public. 
+This is an informative website and users can find useful information when they search through each travel review. They can check out recommended attractions in each country and what is the estimated cost of trip based on total length of trip 
+
 
 ## Project Structure
 ###(i)Overview
-- Homepage - The homepage has a short, muted, autoplay video that features the gameplay. Below that, there is a short description of the game. There is also a logo on the top right-hand side of the website and a collapsable navigation bar on the right-hand side of the website. 
 
-- About Game - The about section includes more information about the game. There is a short description about the game, its features and there is also a gallery of images.
+Based on above project strategy, I identified the following requirements:
+1) The website must provide users with ease of navigation and displays information that is clear and easy to read.
 
-- Buy Now - The buy now page includes links to the official PC and Console purchase pages. There is also a parallax image in the background and a sticky social media bar on the side of the page. 
+2) Content Requirements
 
-###(ii) Wireframes here.
+The website includes a simple landing page that displays the latest trip reviews posted by users (sorted by latest post).  Users can either scroll down the landing page for all the reviews or they can search for the entries via a search link.
 
-Save your wireframe in a pdf document. Upload to google drive. Get a shareable link. Put it here.
+The website pages included:
+
+## Create
+
+1. Add Trip - A page that contains an “add journey” form where users can input information according to each field and add their            reviews on the website.
+
+## Read
+
+1. Tripee.com – Introduction Landing Page shows all travel reviews. Users can click into each review for more details.
+
+2. Search Trip - A page that contains 4 search dropdowns where users can search through the website for trip information.
+
+## Update
+
+1. Users can access the website to edit the trips that they posted.
+
+2. From the landing page, users can click on ‘Click for Trip Details!” under each trip review posted on the landing page and click on      ‘Edit Trip’ to update trip information or 
+
+3. From the Search Trip page, users can select a trip review via “Search Trip” link on the navigation bar to search for a trip and on      the search results page, they can click on ‘View Trip” and click on ‘Edit Trip’ to update trip information.
+
+## Delete
+
+1. Users can access the website to delete the trips that they posted.
+
+2. From the landing page, users can click on ‘Click for Trip Details!” under each trip review posted on the landing page and click on      ‘Delete Trip’ to delete trip review or 
+
+3. From the Search Trip page, users can select a trip review via “Search Trip” link on the navigation bar to search for a trip and on      the search results page, they can click on ‘View Trip” and click on ‘Delete Trip’ to delete trip review.
+
+## Skeleton
+
+As part of the design process, I saved the wireframes in folder/static/imagewireframes. To view the jpg images, please change size view to 20%.
+
+## Surface
+
+1. Colors:
+
+The main colors used are grey, black, purple and white since it is an information website.
+
+2. Background Images
+
+Performing an image search for globe led me to use the background image in my website.
+
+3. Typeface
+
+Throughout the site I used font types: Arial and Courier 
+
+4. Interactions
+
+Created a simple form for users to input their travel information and included easy to use dropdown country list and trip category list. As well as users can use the number arrow ‘updown’ selectors when they input the ratings, length of trip instead of typing the figures.
+Users will be prompted to upload a profile image (required) during add /edit of reviews. 
+
+###(ii) Wireframes
+
+As part of the design process, I saved the wireframes in folder/static/imagewireframes. To view the jpg images, please change size view to 20%.
 
 ## Project Skeleton
 ### (i) Existing Features
-- Homepage
-The muted, autoplay video gives users a peek into the gameplay. Additionally, the short introduction of the game gives users a little more detail about the game. The logo on the top-left hand corner also lets users know that they have come to the right website. Additionally, it makes the website more credible. There is a collapsable navigation bar on the top-right hand corner of the homepage. This was placed to give users an easier access to navigate the different pages easily and quickly. 
 
-- About
-Bootstrap features like cards were used to explain the various features of the gameplay. Another Bootstrap feature that was used in the about page was the carousel images, to showcase the screenshots taken from the game. The image under the Expansion Pack section is a link to the official video game page, which gives more information. 
-
-- Buy Now
-In the buy now page, users can visit the official social media sites to learn more about the game 
-and connect with the game community. Apart from that they will be able to purchase the game in the platform of their choice. At the bottom of the page, users will be able to input their email address and subscribe to the latest news and updates.
+1. Users can easily create a new record or edit an existing by completing a simple to use form. 
+2. Created country dropdown list and number selectors for users to use in each form.
+3. Created easy navigation for users to locate each record and link the edit and delete function on each trip record page.
+4. Users can also upload a new trip profile image that best represents each trip review. 
+5. All pages have been written with semantic HTML in mind.
+6. Fixed Scroll to Top: Each page has a fixed scroll to top, for ease of navigation.
+7. Responsive Design: Site pages are designed to work on all sizes of device.
 
 ### (ii) Features to implement in the future
-In the future, I would like to include more information about the expansion packs and the 
-season pass so as to give users more of a choice when it comes to what they want to buy. 
+In future,
 
-In the about page, I would like to have more images and information about the different characters in the game. I also think including a buy now button will increase and drive sales.
-
-I would also like to include more interactive elements in the buy now page that would achieve the end goal of persuading users to buy the game. These interactive elements could be in the form of image hover overlay, an animated buy now button, etc. 
-
-###Limitation 
-There is also a subscription form at the bottom of the page,
-although clicking on the submit button will not navigate away from the website. (There is no Javascript). This would be a feature to implement in the future.
-
-## Project Surface
-### Design Choices
-(i) The color scheme of orange and black reflects the main theme of the overall game and hence why it is consistently used throughout the website. I also believe that the colour scheme will appeal to users.
-(ii) The font looks fun and appeals to gamers. It also reflects the game and the gameplay.
-(iii) A scrollable parallax image was included in the buy now page to give the webpage more depth. I also believe the juxtaposition of the image and the subscription form will enable and encourage users to buy and subscribe to the game. An active subscription is equally important as a purchase as it measures the individual's interest level and allows developers to push more news and updates to their email so as to attain the goal of a purchase if the user has not already bought the game. 
+1. To include a bootstrap datepicker and calendar for users to indicate start and end date of trip. 
+2. To change file upload as an optional requirement instead. So users are not required to upload image for each addition/edit.
+3. Users can source for trip based on trip budget and using an api to source for external trip providers.
 
 ## Technologies
 
-1. HTML (link to the documentation: https://devdocs.io/html/)
-HTML was used to structure the content of the website.
-2. CSS (link to the documentation: https://devdocs.io/css/)
-CSS was used to style the website.
-3. Bootstrap (link to the documentation: https://getbootstrap.com)
-4. Javascript — for country dropdown. (link to the documentation: https://devdocs.io/jsdoc/)
+In this project the following technologies have been used:
+1.  Mongodb
+2.  Accessing countries names selector using https://restcountries.eu/rest/v2/all API
+3.  Javascript
+4.  Bootstrap 4
+5.  HTML
+6.  CSS
+7.  Flask
+8.  Python
+9.  Django
+10. jQuery
+11. Inline html styling
 
 ## Testing
-(i) Mobile Responsiveness
 
-This site was tested across multiple devices multiple mobile devices 
-(iPhone 4, 5, 7: Chrome and Safari, iPad, Samsung Galaxy) to ensure compatibility and responsiveness.)
+Throughout this project I have done regular testing and reloaded the pages many times after each addition and modification on cloud 9 and Heroku.
 
-- Screenshots of your test: --insert links---
-Website tested on mobile and on laptop mode.
+1. To test the functionality and usability of the site, I did a class presentation. 
 
-(ii) Browser Compatability
+Their feedback was the website needed more images and to include a country selector instead of user typing each country visited manually. This is to avoid duplication of countries being shown in dropdown list.
 
-This site was tested across multiple devices multiple mobile devices 
-(iPhone 4, 5, 7: Chrome and Safari, iPad, Samsung Galaxy) to ensure compatibility and responsiveness.)
+2. I tested the compatibility of my site by viewing the website on my phone to check responsive settings.
 
-(iii) Additionally, parallax scrolling has been turned off for phones, as soon as the breakpoint hits min-device-width: 300px.
+3. Testing the navigation links to ensure the pages are linked.
 
-(iv) Under the subscription section, users will get a prompt in red if their email has not been entered in the correct format.
+## Search function
 
-(v) Test Cases 
+Tests were carried out for each search tool ensuring that the search results display the correct results.
 
-| Test Case(s)        | Description           | Outcome |
-| :------------- |:-------------| :-----|
-| 1      | When user clicks on home link on the top-right navigation bar, the website redirects to the home page. | Pass  |
-| 2      | When user clicks on about link on the top-right navigation bar, the website redirects to the about page. | Pass  |
-| 3      | When user clicks on home link on the top-right navigation bar, the website redirects to the buy now page. | Pass  |
-| 4      | User should see 3 buttons at the top corner of the navigation bar. | Pass  |
-| 5      | When user clicks on the linkable image under the Expansion Pack section in the about page, he/she will be directed to the official page which gives the user more information. | Pass  |
-| 6      | When user clicks on the linkable platforms (Steam, PS4, Xbox) in the buy now page, he/she will be directed to the official purchase page for each of the different platforms. | Pass  |
-| 7      |When user enters their email address in the wrong format, they will be prompted in red to re-type their email address. | Pass  |
-| 8      |All links in the website will open in a new tab using 'target="_blank"' | Pass  |
+At the start, the search filter didn’t work as it displayed all information from the database. But it was rectified after placing conditions in the app.py for each filter.
+
+## Add/Update function
+
+Created several dummy records to add/update via website. For each new records/edits, I need to make that the fields are updated according to each object ID on Mongodb collection . 
+
+Making sure that there are no flask or jinja errors. At the start of the testing, I received many errors hence I needed to change the jinja syntax in each html and also changed the routes on app.py.
+
+Uploading files created many issues. I received server error after I deploy to Heroku, It got fixed after changing the configuration of cloud9 Ubuntu.
+
+## Deployment
+
+The site has been deployed using github and Heroku:
+
+The app live at :
+
+https://howyjane.github.io/trip_itinerary_review
+
+https://howytripee.herokuapp.com/ 
+
 
 ## Bugs Discovered
 // Any bugs that you've discovered and has yet to be fixed.
 
 ### Media 
 
-All photos and video were taken from the game via screenshots and screen recordings.
-All rights go to Techland, the game developer and publisher. 
+Content & Media All content on this site is taken from https://restcountries.eu/rest/v2/all through the use of APIs, Tripadvisor and Triphobo for recommended attractions and reviews.
+
+All copyrights of images and text belong to their respective owners.
+
+1. Website layout:
+https://startbootstrap.com/templates/heroic-features/
+
+2. Rest countries API documentation links:
+https://restcountries.eu/rest/v2/all
+https://restcountries.eu/#api-endpoints-all
+
+3. Background Image:
+https://bitcoinist.com/wp-content/uploads/2019/09/shutterstock_703229845.jpg
+       
+4. Trip Review Pictures URL:
+
+https://cdn.thecrazytourist.com/wp-content/uploads/2019/04/ccimage-shutterstock_520182697.jpg
+https://loveincorporated.blob.core.windows.net/contentimages/fullsize/1751dc80-2a64-4593-8a56-bd75502fb470-lead-image-osaka-2.jpg
+https://www.nationalgeographic.com/content/dam/travel/Guide-Pages/asia/tokyo_travel.adapt.1900.1.jpg
+https://www.jnto.go.jp/ph/spot-activity/wp-content/uploads/sites/2/2018/12/OdoriPark-1.jpg
+https://www.jrailpass.com/blog/wp-content/uploads/2016/06/fukuoka-tower-1200x800.jpg
+https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/5983298210_7d8ecd6dde_b.jpg
+https://media.timeout.com/images/105292780/630/472/image.jpg
+https://www.tripsavvy.com/thmb/K7_aPC1XA-elxfIVjYcoQDHS4FQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/gamcheon-culture-village--busan--south-korea-1149825040-2bc1e16a08c14ee9add5aae5f0e8e9b9.jpg
+https://www.fodors.com/wp-content/uploads/2019/04/HERO_BangkokTips_Hero_shutterstock_367503629.jpg
+https://img.theculturetrip.com/x/smart/wp-content/uploads/2019/04/asia-thai-chiang.jpg
+https://lp-cms-production.imgix.net/2019-06/ab4a79b04c7c96508ea77aec7073e7d3-ho-chi-minh-city.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4
+https://www.tripsavvy.com/thmb/0-6xZYPvwUSNMac0IAY_C9JTO1E=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-520483268-5a8001f5d8fdd50037283bae.jpg
+https://www.befreetour.com/img/produk/romantic-danang-city-tour/romantic-danang-city-tour_398c3f9c87f81723ae60a230aeeeaea6c5030778.jpg
+https://www.roadaffair.com/wp-content/uploads/2018/07/traffic-phnom-penh-cambodia-shutterstock_653520022-1024x674.jpg
+https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/06/74/c2/c3.jpg
+https://cdn.britannica.com/61/192661-050-997DE572/Colombo-Sri-Lanka.jpg
+https://media.radissonhotels.net/image/Destination-Pages/Localattraction/16256-118729-f63245709_3XL.jpg?impolicy=HomeHero
+https://www.tripsavvy.com/thmb/K7_aPC1XA-elxfIVjYcoQDHS4FQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/gamcheon-culture-village--busan--south-korea-1149825040-2bc1e16a08c14ee9add5aae5f0e8e9b9.jpg
+https://media.timeout.com/images/105292780/630/472/image.jpg
+https://lp-cms-production.imgix.net/2019-06/103730883%20.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4
+https://www.tripsavvy.com/thmb/fMD1hxlyP9bVAG_dKjqNKu4NkwM=/3435x2576/smart/filters:no_upscale()/panoramic-skyline-and-cityscape-of-city-hongkong-544144869-5a08d5d3494ec90037f7cfff.jpg
+https://lp-cms-production.imgix.net/2019-06/58481926.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4
+https://www.planetware.com/wpimages/2019/08/thailand-krabi-top-beaches-railay-beach.jpg
+https://www.tripsavvy.com/thmb/fHLak1CQr6gy0wDhDMBywSZFKUI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/melaka_tour_01-83cec3bde78c4284bc6ada92559341dd.jpg
+https://www.tripsavvy.com/thmb/QFFZg7VN6zEPXGz9MuTrg4rlpl8=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/penang-malaysia-b40c38589e794a61ba904d64c0a02c43.jpg
+https://www.tripsavvy.com/thmb/W3sVPeg9soCoiY3dLcqcZh0XhB8=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/where-is-kuala-lumpug-5740492a5f9b58723d520ef4.jpg
+https://www.costacruises.com/content/dam/costa/costa-asset/c_037/place/C037_Places_Singapore.jpg.image.750.563.low.jpg
+https://r-cf.bstatic.com/images/hotel/max1024x768/216/216484929.jpg
+https://img.theculturetrip.com/768x432/wp-content/uploads/2019/01/c9bdmt-feature.jpg
+https://lp-cms-production.imgix.net/2019-06/78a5970b7661df124e01cc6f8efd572a-potala-palace.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4
+https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/bali-nusa-tenggara/bali/bali/Image3.jpg
+ 
 
 ### Acknowledgements
 
-W3Schools:
+My website was inspired by Tripadvisor and Triphobo https://www.triphobo.com/tripplans/asia
+https://www.tripadvisor.com.sg/
 
-1. Used an overlay for the navigation bar W3Schools: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay
-2. Used a sticky social bar from W3Schools: https://www.w3schools.com/howto/howto_css_sticky_social_bar.asp
-
-Bootstrap features: 
-
-1. Used cards for the about page of the website : https://getbootstrap.com/docs/4.3/components/card/
-2. Used carousel for the about page of the website: https://getbootstrap.com/docs/4.3/components/carousel/
-3. Used form for the subscription section in the buy now page: https://getbootstrap.com/docs/4.3/components/forms/#overview
-
-Fonts:
-
-https://fonts.google.com.
