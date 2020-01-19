@@ -16,7 +16,7 @@ There is no ER diagram for this project because I use Mongodb instead of mysql .
 
 ### User Stories
 
-The key intention of this website is to attract users who are planning for their next holiday and for those who had visited to any countries, they can utilise the platform to share their experiences to members of the public. 
+The key intention of this website is to attract users who are planning for their next holiday and for those who went on holidays, they can utilise the platform to share their experiences to members of the public. 
 This is an informative website and users can find useful information when they search through each travel review. They can check out recommended attractions in each country and what is the estimated cost of trip based on total length of trip 
 
 
