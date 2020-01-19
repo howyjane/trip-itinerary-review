@@ -135,12 +135,13 @@ def update_trip():
     date= datetime.now()
    
     imageUrl = ''
+
     if file.filename != '': 
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         imageUrl = url_for('uploaded_file', filename=filename)
 
- 
+
     tripInfo=conn[DATABASE_NAME][COLLECTION_NAME].update({'_id': ObjectId(tripId)},
 
     { "$set": {
