@@ -4,7 +4,7 @@ body{
 
  
   /* Background styles */
-  background-image: url('/static/images/background_image.jpeg');
+  background-image: url('/static/images/background_image.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -21,7 +21,7 @@ body{
 
 .content-wrapper{
   background-color:rgba(1, 1, 1,0.3);
-  height:280vh;
+  height:350vh;
   
   /* Text styles */
   text-align: left;
@@ -42,25 +42,6 @@ body{
 
 
 
-
-.content-wrapper3{
-  background-color:rgba(1, 1, 1,0.3);
-  height:200vh;
-    
-  /* Text styles */
-  text-align: left;
-  color:whitesmoke;
-  font-size:1.09em;
-  font-family:Arial;
-  
-}
-
-.container3{
-  background-color:rgba(0, 0, 0, 0.39);
-  padding:10px 10px 10px;
-  background-position: center center;
-  
-}
 
 
 
