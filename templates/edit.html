@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    
+<!--nav bar-->   
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{url_for('index')}}">Tripee.com</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -28,60 +28,66 @@
     </ul>
   </div>
 </nav>
-    <div class="container">
-        <div class="content-wrapper">
-                <div class="col-md-auto">
-                    <form class='sign-up-form' action="/edit_trip" method="post" enctype="multipart/form-data">
-                    <br><br>
-                    <h2 class='text-center'>Edit Your Travel Journey!</h2>
-                    <br>
-                    <input class="form-control" name="_id" value="{{tripInfo._id}}" hidden>
-                    <br>
-                    User Name:<input class="form-control" name="name" value="{{tripInfo.name}}" type="text" required>
-                    <br>
-                    Trip Title:<input class="form-control" name="triptitle" value="{{tripInfo.triptitle}}" placeholder="Enter Trip Title" type="text" required>
-                    <br>
-                    Select Trip Category : <select name="tripcategory">
+
+<!--form content-->
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="col-md-auto">
+        <form class='sign-up-form' action="/edit_trip" method="post" enctype="multipart/form-data">
+          <br><br>
+            <h2 class='text-center'>Edit Your Travel Journey!</h2>
+              <br>
+                <input class="form-control" name="_id" value="{{tripInfo._id}}" hidden>
+                  <br>
+                  User Name:<input class="form-control" name="name" value="{{tripInfo.name}}" type="text" required>
+                  <br>
+                  Trip Title:<input class="form-control" name="triptitle" value="{{tripInfo.triptitle}}" placeholder="Enter Trip Title" type="text" required>
+                  <br>
+                  Select Trip Category : <select name="tripcategory">
                     <option >Leisure</option>
                     <option >Work</option>
                     <option >Family</option>
                     <option >Others</option>
-                    </select>
-                    <br><br>
-                    Length of Trip (Days): <Input type="number" name="lengthoftrip" id="myNumber" value="{{tripInfo.lengthoftrip}}"placeholder="Enter Total Number of Days" required min="1" step="0.5" max="90" value="0" pattern="[0-9]*" /><br>
-                    <br>
-                    Select Country : <select id="countries" name="country"></select>
-                    <br><br>
-                    City Name: <input class="form-control" name="city" value="{{tripInfo.city}}" placeholder="Enter City Name" type="text">
-                    <br>
-                    Your Recommended Attractions: <input class="form-control" name="tripattraction" value="{{tripInfo.tripattraction}}" placeholder="Your Recommended Attractions?" type="text" required>
-                    <br>
-                    Your Trip Review: <input class="form-control" name="tripreview" value="{{tripInfo.tripreview}}" placeholder="Enter Your Trip Review" type="text" required>
-                    <br>
-                    Trip Ratings: <Input type="number" name="ratings" id="myNumber" value="{{tripInfo.ratings}}" placeholder="Enter Your Trip Ratings" required min="1" step="0.5" max="5" value="0" pattern="[0-9]*" /><br>
+                  </select>
+                  <br><br>
+                  Length of Trip (Days): <Input type="number" name="lengthoftrip" id="myNumber" value="{{tripInfo.lengthoftrip}}"placeholder="Enter Total Number of Days" required min="1" step="0.5" max="90" value="0" pattern="[0-9]*" /><br>
+                  <br>
+                  Select Country : <select id="countries" name="country"></select>
+                  <br><br>
+                  City Name: <input class="form-control" name="city" value="{{tripInfo.city}}" placeholder="Enter City Name" type="text">
+                  <br>
+                  Your Recommended Attractions: <input class="form-control" name="tripattraction" value="{{tripInfo.tripattraction}}" placeholder="Your Recommended Attractions?" type="text" required>
+                  <br>
+                  Your Trip Review: <input class="form-control" name="tripreview" value="{{tripInfo.tripreview}}" placeholder="Enter Your Trip Review" type="text" required>
+                  <br>
+                  Trip Ratings: <Input type="number" name="ratings" id="myNumber" value="{{tripInfo.ratings}}" placeholder="Enter Your Trip Ratings" required min="1" step="0.5" max="5" value="0" pattern="[0-9]*" /><br>
                     <p>(1: Very Poor, 2: Poor, 3: Average, 4: Good, 5: Very Good)</p>
-                    Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" value="{{tripInfo.totalestimatedcost}}"required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
-                    <br><br>
-                    <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
-                    <br>
-                    <label for="">Insert Your Trip Profile Image:</label><br>
+                  Estimated Trip Cost: USD <input type="text" name="totalestimatedcost" value="{{tripInfo.totalestimatedcost}}"required min="0.01" step="0.01" max="1000000" value="0.00" id="number" />
+                  <br><br>
+                  <img class="card-img-top img-fluid" src="{{tripInfo.imageURL}}" alt="profileimg">
+                  <br>
+                  <label for="profileimage">Insert Trip Profile Image:</label><br>
                     <input type="file"
                     id="photo" name="photo"
                     accept="image/png, image/jpeg" required>
                     <br><br>
-
-                    <p>Posted on {{tripInfo.date}}</p>
-
-                    <br>
+                  <p>Posted on {{tripInfo.date}}</p>
+                  <br>
+                    <!-- button-->
                     <a href="{{url_for('landingpagesummary_trip', tripId = tripInfo._id)}}" class="btn btn-info center-success">Previous Page</a>
                     <button type="submit" value="submit" class="btn btn-info center-block">Edit Trip </button>
-                    <br>
-                </form>
-                <br>
-                </div>
-            </div>
-          </div>
-          
+                  <br>
+        </form>
+        <!--col-md-auto-->
+      </div>
+      <!--content-wrapper--> 
+    </div>
+     <!--container--> 
+  </div>
+<!--javascript-->          
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>          
 <script src="/static/script.js"></script>
 
 
